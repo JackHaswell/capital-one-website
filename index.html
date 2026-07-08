@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital One Property Partners — Property Investment & Development, North East England</title>
+<meta name="description" content="Capital One Property Partners transforms undervalued North East property into high-performing assets. Partner with us on HMO and commercial developments delivering consistent investor returns.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230c0b09'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='34' fill='%23c8a464' text-anchor='middle'%3EC1%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Capital One Property Partners — Property Investment & Development, North East England">
+<meta property="og:description" content="We acquire, transform and manage residential and commercial property across Teesside and the North East — delivering consistent, secured returns for our investment partners.">
+<meta property="og:image" content="https://jackhaswell.github.io/capital-one-website/images/hero.webp">
+<meta property="og:url" content="https://jackhaswell.github.io/capital-one-website/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CAPITAL ONE PROPERTY PARTNERS — REDESIGN CONCEPT
+   All £ figures & stats marked [PLACEHOLDER] — replace with real data
+   ============================================================ */
+:root{
+  --ink:#0c0b09;
+  --ink-2:#14120e;
+  --ink-3:#1c1915;
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(200,164,100,.25);
+  --gold:#c8a464;
+  --gold-bright:#e0be7e;
+  --cream:#f4efe6;
+  --body:#a9a294;
+  --body-bright:#cfc8b8;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Manrope',-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:var(--ink)}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:14px}
+.kicker::before{content:"";width:36px;height:1px;background:var(--gold);display:inline-block}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.01em}
+.h-display{font-size:clamp(42px,6.2vw,84px)}
+.h-section{font-size:clamp(32px,4vw,54px);max-width:18ch}
+.lead{color:var(--body-bright);font-size:18px;font-weight:300;max-width:56ch}
+.gold-i{font-style:italic;color:var(--gold-bright)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:17px 34px;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:1px solid transparent;cursor:pointer;transition:all .3s ease}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-bright);transform:translateY(-2px);box-shadow:0 14px 34px rgba(200,164,100,.25)}
+.btn-ghost{border-color:rgba(255,255,255,.25);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
+.btn .arr{transition:transform .3s ease}
+.btn:hover .arr{transform:translateX(5px)}
+
+/* ============ NAV ============ */
+header{position:fixed;inset:0 0 auto 0;z-index:100;transition:all .35s ease;padding:26px 0}
+header.scrolled{background:rgba(12,11,9,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:14px 0}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;flex-direction:column;line-height:1.15}
+.logo b{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.02em}
+.logo span{font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.nav-links{display:flex;gap:38px;list-style:none}
+.nav-links a{font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--body-bright);position:relative;padding:6px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .3s ease}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{width:100%}
+.nav .btn{padding:13px 26px}
+.burger{display:none;background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:160px 0 0}
+.hero-bg{position:absolute;inset:0;z-index:-2;background:
+  linear-gradient(180deg,rgba(12,11,9,.55) 0%,rgba(12,11,9,.35) 40%,rgba(12,11,9,.92) 82%,var(--ink) 100%),
+  url('images/hero.webp') center 55%/cover no-repeat;
+  background-color:var(--ink-2)}
+.hero-inner{padding-bottom:64px;width:100%}
+.hero .kicker{margin-bottom:26px}
+.hero h1{max-width:15ch}
+.hero .lead{margin:28px 0 40px}
+.hero-ctas{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:70px}
+.hero-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);gap:0}
+.hero-strip .cell{padding:28px 28px 34px 0;border-right:1px solid var(--line)}
+.hero-strip .cell:last-child{border-right:none}
+.stat-n{font-family:var(--serif);font-size:clamp(30px,3vw,44px);color:var(--gold-bright);line-height:1}
+.stat-n sup{font-size:.45em;top:-.9em}
+.stat-l{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--body);margin-top:10px;font-weight:600}
+
+/* ============ SECTION SHELL ============ */
+section{padding:120px 0;position:relative}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:70px;flex-wrap:wrap}
+.sec-head .kicker{margin-bottom:20px}
+
+/* ============ ABOUT ============ */
+.about{background:var(--ink)}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+.about-img{position:relative}
+.about-img .main{aspect-ratio:4/5;object-fit:cover;filter:saturate(.85)}
+.about-img::after{content:"";position:absolute;inset:22px -22px -22px 22px;border:1px solid var(--line-2);z-index:-1}
+.about-badge{position:absolute;left:-30px;bottom:40px;background:var(--gold);color:var(--ink);padding:26px 30px;max-width:210px}
+.about-badge .n{font-family:var(--serif);font-size:40px;line-height:1}
+.about-badge .l{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
+.about-copy .kicker{margin-bottom:22px}
+.about-copy h2{margin-bottom:26px}
+.about-copy p{color:var(--body-bright);font-weight:300;margin-bottom:20px}
+.about-points{list-style:none;margin:34px 0 42px;display:grid;gap:16px}
+.about-points li{display:flex;gap:16px;align-items:flex-start;color:var(--cream);font-weight:500;font-size:15.5px}
+.about-points .tick{width:22px;height:22px;flex:none;border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:3px}
+
+/* ============ PILLARS ============ */
+.pillars{background:var(--ink-2);border-block:1px solid var(--line)}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.pillar{background:var(--ink-2);padding:52px 44px;transition:background .35s ease;position:relative;overflow:hidden}
+.pillar:hover{background:var(--ink-3)}
+.pillar .num{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:18px}
+.pillar h3{font-size:26px;margin:18px 0 16px}
+.pillar p{color:var(--body);font-size:15px;font-weight:300}
+.pillar .pi{width:54px;height:54px;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;margin-bottom:28px;color:var(--gold);font-size:22px}
+
+/* ============ TRACK RECORD ============ */
+.projects .sec-head p{max-width:44ch}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.proj{background:var(--ink-2);border:1px solid var(--line);transition:all .4s cubic-bezier(.2,.7,.3,1);display:flex;flex-direction:column}
+.proj:hover{border-color:var(--line-2);transform:translateY(-6px) scale(1.025);box-shadow:0 30px 60px rgba(0,0,0,.5);z-index:5}
+.proj-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#0a0908}
+.proj-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:saturate(.92);opacity:0;transition:opacity .7s ease;z-index:1}
+.proj-img img.on{opacity:1}
+.proj-img img.blurbg{object-fit:cover;filter:blur(24px) brightness(.4) saturate(.7);z-index:0;transform:scale(1.15)}
+.proj-tag{z-index:2}
+.pipeline-visual{position:relative;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:
+  radial-gradient(120% 90% at 50% 110%,rgba(200,164,100,.16) 0%,transparent 60%),
+  linear-gradient(160deg,var(--ink-3) 0%,#0a0908 100%)}
+.pipeline-visual::after{content:"";position:absolute;inset:16px;border:1px solid var(--line-2);pointer-events:none}
+.pv-kicker{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.pv-num{font-family:var(--serif);font-size:clamp(56px,6vw,88px);color:var(--gold-bright);line-height:1}
+.pv-label{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--body-bright);font-weight:600}
+.proj-dots{position:absolute;bottom:14px;right:16px;display:flex;gap:6px;z-index:2}
+.proj-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .3s}
+.proj-dots i.on{background:var(--gold-bright)}
+.proj-tag{position:absolute;top:18px;left:18px;background:rgba(12,11,9,.85);backdrop-filter:blur(6px);color:var(--gold-bright);font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--line-2)}
+.proj-body{padding:30px 30px 34px;display:flex;flex-direction:column;flex:1}
+.proj h3{font-size:24px;margin-bottom:6px}
+.proj .loc{color:var(--body);font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:22px}
+.proj-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;border-top:1px solid var(--line);padding-top:22px;margin-top:auto}
+.proj-stats .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--body);font-weight:600}
+.proj-stats .v{font-family:var(--serif);font-size:22px;color:var(--gold-bright);margin-top:2px}
+.ph-note{font-size:11px;color:var(--body);margin-top:26px;letter-spacing:.05em}
+
+/* ============ PROCESS ============ */
+.process{background:var(--ink-2);border-block:1px solid var(--line)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:44px;counter-reset:step}
+.proc{position:relative;padding-top:34px}
+.proc::before{content:"";position:absolute;top:0;left:0;right:-44px;height:1px;background:var(--line)}
+.proc:last-child::before{right:0}
+.proc::after{content:"";position:absolute;top:-4px;left:0;width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
+.proc .n{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--gold);margin-bottom:14px}
+.proc h3{font-size:21px;margin-bottom:12px}
+.proc p{color:var(--body);font-size:14.5px;font-weight:300}
+
+/* ============ TEAM ============ */
+.team-wrap{display:grid;grid-template-columns:440px 1fr;gap:28px;align-items:stretch}
+.team-photo{margin:0;border:1px solid var(--line);overflow:hidden;position:relative}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;filter:saturate(.9)}
+.team-bios{display:grid;gap:28px}
+.member{display:flex;background:var(--ink-2);border:1px solid var(--line);transition:border-color .3s ease}
+.member:hover{border-color:var(--line-2)}
+.member-body{padding:34px 34px 30px}
+.member h3{font-size:24px}
+.member .role{color:var(--gold);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin:6px 0 16px}
+.member p{color:var(--body);font-size:14.5px;font-weight:300}
+.member .links{margin-top:18px;display:flex;gap:14px}
+.member .links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--body-bright);border-bottom:1px solid var(--line-2);padding-bottom:3px;transition:color .3s}
+.member .links a:hover{color:var(--gold-bright)}
+
+/* ============ TESTIMONIALS ============ */
+.social{background:var(--ink-2);border-block:1px solid var(--line)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.testi{background:var(--ink);border:1px solid var(--line);padding:40px 36px;display:flex;flex-direction:column;gap:24px}
+.testi .stars{color:var(--gold);letter-spacing:4px;font-size:14px}
+.testi p{color:var(--body-bright);font-weight:300;font-size:15.5px;font-style:italic;flex:1}
+.testi .who{display:flex;align-items:center;gap:14px}
+.testi .avatar{width:44px;height:44px;border-radius:50%;background:var(--ink-3);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--gold);font-size:16px}
+.testi .who b{display:block;font-size:14px;font-weight:700}
+.testi .who span{font-size:12px;color:var(--body)}
+
+/* ============ CTA ============ */
+.cta{position:relative;padding:150px 0;text-align:center}
+.cta-bg{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,var(--ink) 0%,rgba(12,11,9,.82) 30%,rgba(12,11,9,.82) 70%,var(--ink) 100%),
+  url('images/cta-bg.webp') center 40%/cover no-repeat;
+  background-color:var(--ink-2)}
+.cta .kicker{justify-content:center}
+.cta .kicker::before{display:none}
+.cta h2{font-size:clamp(36px,4.6vw,62px);max-width:22ch;margin:22px auto 18px}
+.cta p{color:var(--body-bright);max-width:52ch;margin:0 auto 44px;font-weight:300}
+.cta-actions{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.cta .micro{margin-top:28px;font-size:12.5px;color:var(--body);letter-spacing:.06em}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:50px;margin-bottom:54px}
+.foot-grid h4{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:800}
+.foot-grid ul{list-style:none;display:grid;gap:12px}
+.foot-grid a,.foot-grid li{color:var(--body);font-size:14px;font-weight:400;transition:color .3s}
+.foot-grid a:hover{color:var(--cream)}
+.foot-brand p{color:var(--body);font-size:14px;font-weight:300;max-width:34ch;margin-top:16px}
+.legal{border-top:1px solid var(--line);padding-top:30px;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.legal p{font-size:11.5px;color:#6f6a5e;max-width:88ch;font-weight:300}
+.legal .links{display:flex;gap:26px;font-size:12px;flex:none}
+.legal .links a{color:var(--body)}
+
+/* ============ SCROLL SQUIGGLE LINE ============ */
+.journey{position:relative}
+.squiggle{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible}
+.squiggle path{fill:none;stroke:var(--gold);stroke-width:2px;vector-effect:non-scaling-stroke;opacity:.55;stroke-linecap:round}
+.squiggle .dot{fill:var(--gold-bright);filter:drop-shadow(0 0 6px var(--gold-bright)) drop-shadow(0 0 18px rgba(224,190,126,.6))}
+@media(max-width:900px){.squiggle{display:none}}
+
+/* ============ REVEAL (content visible by default; JS only adds motion) ============ */
+@media (prefers-reduced-motion:no-preference){
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+}
+
+/* ============ MOBILE MENU ============ */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:rgba(12,11,9,.97);backdrop-filter:blur(12px);flex-direction:column;justify-content:center;padding:100px 32px 48px;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-menu>a{font-family:var(--serif);font-size:30px;color:var(--cream);padding:16px 0;border-bottom:1px solid var(--line)}
+.mobile-menu>a:active{color:var(--gold-bright)}
+.mobile-menu .btn{margin-top:36px;justify-content:center;font-size:13px;border-bottom:none}
+@media(min-width:721px){.mobile-menu{display:none!important}}
+@media(min-width:901px){.cta-bg{background-attachment:scroll,fixed}}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1020px){
+  .about-grid{grid-template-columns:1fr;gap:60px}
+  .pillar-grid,.proj-grid,.testi-grid{grid-template-columns:1fr 1fr}
+  .proc-grid{grid-template-columns:1fr 1fr;gap:54px 40px}
+  .team-wrap{grid-template-columns:1fr}
+  .team-photo img{aspect-ratio:4/5;max-height:70vh}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hero-strip{grid-template-columns:1fr 1fr}
+  .hero-strip .cell:nth-child(2){border-right:none}
+}
+@media(max-width:720px){
+  .nav-links,.nav .btn-gold{display:none}
+  .burger{display:block}
+  .pillar-grid,.proj-grid,.testi-grid,.proc-grid,.foot-grid,.hero-strip{grid-template-columns:1fr}
+  .hero-strip .cell{border-right:none;border-bottom:1px solid var(--line);padding-right:0}
+  .member{display:block}
+  section{padding:80px 0}
+  .about-badge{left:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="header">
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <b>Capital One</b>
+      <span>Property Partners</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#track-record">Track Record</a></li>
+      <li><a href="#process">Our Process</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://calendly.com/capital-one-property-partners/consultation" target="_blank" rel="noopener" class="btn btn-gold">Book a Call <span class="arr">→</span></a>
+    <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+  </div>
+</header>
+
+<nav class="mobile-menu" id="mobile-menu">
+  <a href="#about">About</a>
+  <a href="#track-record">Track Record</a>
+  <a href="#process">Our Process</a>
+  <a href="#team">Team</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn-gold" href="https://calendly.com/capital-one-property-partners/consultation" target="_blank" rel="noopener">Book a Call <span class="arr">→</span></a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <p class="kicker">Property Investment &amp; Development · North East England</p>
+    <h1 class="h-display">Turning undervalued property into <span class="gold-i">high-performing assets</span></h1>
+    <p class="lead">We acquire, transform and manage residential and commercial property across Teesside and the North East — delivering consistent, secured returns for our investment partners.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-gold">Partner With Us <span class="arr">→</span></a>
+      <a href="#track-record" class="btn btn-ghost">View Track Record</a>
+    </div>
+    <!-- Whole-portfolio figures supplied by directors -->
+    <div class="hero-strip">
+      <div class="cell rv"><div class="stat-n">£<span data-count="1.9" data-dec="1">0</span>M<sup>+</sup></div><div class="stat-l">Portfolio Value</div></div>
+      <div class="cell rv"><div class="stat-n">£<span data-count="280">0</span>k</div><div class="stat-l">Annual Rental Income</div></div>
+      <div class="cell rv"><div class="stat-n">£<span data-count="480">0</span>k<sup>+</sup></div><div class="stat-l">Equity Created Through Development</div></div>
+      <div class="cell rv"><div class="stat-n"><span data-count="100">0</span>%</div><div class="stat-l">Of Completed Projects Fully Let</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= JOURNEY (scroll-drawn line weaves through these sections) ================= -->
+<div class="journey">
+<svg class="squiggle" aria-hidden="true">
+  <defs>
+    <mask id="sq-mask" maskUnits="userSpaceOnUse">
+      <rect id="sq-mask-bg" x="0" y="0" width="100%" height="100%" fill="#fff"/>
+      <!-- black keep-out rects over content injected by JS -->
+    </mask>
+  </defs>
+  <g mask="url(#sq-mask)">
+    <path id="sq-path" d=""/>
+    <circle class="dot" id="sq-dot" r="5" cx="-20" cy="-20"/>
+  </g>
+</svg>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-img rv">
+      <img loading="lazy" decoding="async" class="main" src="images/about.webp" alt="Jack Haswell and Joshua Graham reviewing plans on site">
+      <div class="about-badge">
+        <div class="n">13</div>
+        <div class="l">Years Combined Experience</div>
+      </div>
+    </div>
+    <div class="about-copy">
+      <p class="kicker">Who We Are</p>
+      <h2 class="h-section">Developers, investors and property managers with skin in the game</h2>
+      <p>Capital One Property Partners is a North East property investment and development company built by two operators — not middlemen. We buy underperforming residential and commercial buildings in high-demand locations, re-engineer them into premium rental assets, and hold or exit for profit.</p>
+      <p>Every project we offer to investment partners is one we've underwritten with our own capital and manage hands-on, end to end.</p>
+      <ul class="about-points">
+        <li><span class="tick">✓</span> Specialists in HMO conversion, serviced accommodation and buy-to-lets</li>
+        <li><span class="tick">✓</span> Deep local knowledge across Teesside, Darlington &amp; Hartlepool</li>
+        <li><span class="tick">✓</span> Fixed-return investment structures, secured against the asset</li>
+        <li><span class="tick">✓</span> Monthly investor reporting — full transparency from acquisition to exit</li>
+      </ul>
+      <a href="#team" class="btn btn-ghost">Meet the Directors <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PILLARS ================= -->
+<section class="pillars">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">What We Do</p>
+        <h2 class="h-section">Three ways we create value</h2>
+      </div>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar rv">
+        <div class="pi">⌂</div>
+        <div class="num">01</div>
+        <h3>HMO Development</h3>
+        <p>We convert tired terraces into fully compliant, design-led HMOs with en-suite rooms and studio mixes — built for today's professional tenant and yielding well above single-let returns.</p>
+      </div>
+      <div class="pillar rv">
+        <div class="pi">▦</div>
+        <div class="num">02</div>
+        <h3>Buy-to-Lets</h3>
+        <p>Quality single-let homes in high-demand North East locations — acquired below market value, refurbished to a high standard and let to long-term tenants for dependable rental income and capital growth.</p>
+      </div>
+      <div class="pillar rv">
+        <div class="pi">◈</div>
+        <div class="num">03</div>
+        <h3>Investor Partnerships</h3>
+        <p>Private investors fund our pipeline through secured loan structures — earning fixed returns while we handle everything from acquisition to completion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRACK RECORD ================= -->
+<section class="projects" id="track-record">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">Track Record</p>
+        <h2 class="h-section">Proof, not promises</h2>
+      </div>
+      <p class="lead">Our completed deals from the last 12 months — published with the numbers that matter: purchase price, capital deployed, end value and income.</p>
+    </div>
+    <div class="proj-grid">
+      <!-- NORTHGATE — real figures from Jack. Hover = slideshow of completed photos -->
+      <article class="proj rv">
+        <div class="proj-img">
+          <img loading="lazy" decoding="async" class="on" src="images/northgate-1.webp" alt="Northgate — completed studio">
+          <img loading="lazy" decoding="async" src="images/northgate-2.webp" alt="Northgate — completed interior">
+          <img loading="lazy" decoding="async" src="images/northgate-3.webp" alt="Northgate — completed interior">
+          <img loading="lazy" decoding="async" src="images/northgate-4.webp" alt="Northgate — completed interior">
+          <img loading="lazy" decoding="async" src="images/northgate-5.webp" alt="Northgate — completed interior">
+          <img loading="lazy" decoding="async" src="images/northgate-6.webp" alt="Northgate — completed interior">
+          <img loading="lazy" decoding="async" src="images/northgate-7.webp" alt="Northgate — completed interior">
+          <img loading="lazy" decoding="async" src="images/northgate-8.webp" alt="Northgate — completed interior">
+          <span class="proj-tag">Completed · Fully Let</span>
+        </div>
+        <div class="proj-body">
+          <h3>Northgate</h3>
+          <p class="loc">Darlington</p>
+          <div class="proj-stats">
+            <div><div class="k">Purchase</div><div class="v">£110k</div></div>
+            <div><div class="k">Development</div><div class="v">£460k</div></div>
+            <div><div class="k">Refinanced At</div><div class="v">£750k</div></div>
+            <div><div class="k">Income</div><div class="v">£109k pa</div></div>
+          </div>
+        </div>
+      </article>
+      <!-- STATION ROAD — real figures from Jack -->
+      <article class="proj rv">
+        <div class="proj-img">
+          <img loading="lazy" decoding="async" class="on" src="images/station-road-1.webp" alt="Station Road — completed interior">
+          <img loading="lazy" decoding="async" src="images/station-road-2.webp" alt="Station Road — completed interior">
+          <img loading="lazy" decoding="async" src="images/station-road-3.webp" alt="Station Road — completed interior">
+          <img loading="lazy" decoding="async" src="images/station-road-4.webp" alt="Station Road — completed interior">
+          <img loading="lazy" decoding="async" src="images/station-road-5.webp" alt="Station Road — completed interior">
+          <img loading="lazy" decoding="async" src="images/station-road-6.webp" alt="Station Road — completed interior">
+          <img loading="lazy" decoding="async" src="images/station-road-7.webp" alt="Station Road — completed interior">
+          <img loading="lazy" decoding="async" src="images/station-road-8.webp" alt="Station Road — completed interior">
+          <span class="proj-tag">Completed · Fully Let</span>
+        </div>
+        <div class="proj-body">
+          <h3>Station Road</h3>
+          <p class="loc">Darlington</p>
+          <div class="proj-stats">
+            <div><div class="k">Purchase</div><div class="v">£115k</div></div>
+            <div><div class="k">Refurbishment</div><div class="v">£122k</div></div>
+            <div><div class="k">Refinanced At</div><div class="v">£320k</div></div>
+            <div><div class="k">Income</div><div class="v">£44k pa</div></div>
+          </div>
+        </div>
+      </article>
+      <!-- ALDERSON STREET — real figures from Jack -->
+      <article class="proj rv">
+        <div class="proj-img">
+          <img loading="lazy" decoding="async" class="on" src="images/alderson-1.webp" alt="Alderson Street — completed interior">
+          <img loading="lazy" decoding="async" src="images/alderson-2.webp" alt="Alderson Street — completed interior">
+          <img loading="lazy" decoding="async" src="images/alderson-3.webp" alt="Alderson Street — completed interior">
+          <img loading="lazy" decoding="async" src="images/alderson-4.webp" alt="Alderson Street — completed interior">
+          <img loading="lazy" decoding="async" src="images/alderson-5.webp" alt="Alderson Street — completed interior">
+          <img loading="lazy" decoding="async" src="images/alderson-6.webp" alt="Alderson Street — completed interior">
+          <span class="proj-tag">Completed · 6-Bed HMO</span>
+        </div>
+        <div class="proj-body">
+          <h3>Alderson Street</h3>
+          <p class="loc">Teesside</p>
+          <div class="proj-stats">
+            <div><div class="k">Purchase</div><div class="v">£90k</div></div>
+            <div><div class="k">Refurbishment</div><div class="v">£108k</div></div>
+            <div><div class="k">Refinanced At</div><div class="v">£260k</div></div>
+            <div><div class="k">Income</div><div class="v">£41k pa</div></div>
+          </div>
+        </div>
+      </article>
+      <!-- DEAL PIPELINE — £1.5M confirmed by directors -->
+      <article class="proj rv pipeline-card">
+        <div class="pipeline-visual">
+          <p class="pv-kicker">What's Next</p>
+          <div class="pv-num">£<span data-count="1.5" data-dec="1">0</span>M</div>
+          <p class="pv-label">Current Deal Pipeline</p>
+          <span class="proj-tag">In Progress · Funding Open</span>
+        </div>
+        <div class="proj-body">
+          <h3>Deal Pipeline</h3>
+          <p class="loc">Darlington · Teesside · Hartlepool</p>
+          <div class="proj-stats">
+            <div><div class="k">Strategy</div><div class="v">HMOs + BTLs</div></div>
+            <div><div class="k">Pipeline Value</div><div class="v">£1.5M</div></div>
+            <div><div class="k">Investor Returns</div><div class="v">Fixed &amp; Secured</div></div>
+            <div><div class="k">Status</div><div class="v">Funding Open</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">How We Work Together</p>
+        <h2 class="h-section">From first call to capital returned</h2>
+      </div>
+    </div>
+    <div class="proc-grid">
+      <div class="proc rv">
+        <div class="n">Step 01</div>
+        <h3>Discovery Call</h3>
+        <p>A straightforward conversation about your goals, timeline and capital. No pitch decks, no pressure — we establish whether we're a fit.</p>
+      </div>
+      <div class="proc rv">
+        <div class="n">Step 02</div>
+        <h3>Deal &amp; Structure</h3>
+        <p>We present a live opportunity with full numbers: acquisition cost, works budget, end value, your return and how your capital is secured.</p>
+      </div>
+      <div class="proc rv">
+        <div class="n">Step 03</div>
+        <h3>Development</h3>
+        <p>Our team delivers the project end to end. You receive monthly progress and financial reporting — photos, spend, timeline, milestones.</p>
+      </div>
+      <div class="proc rv">
+        <div class="n">Step 04</div>
+        <h3>Return &amp; Reinvest</h3>
+        <p>On completion or refinance, your capital and agreed return are repaid. Most of our partners roll straight into the next project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">Leadership</p>
+        <h2 class="h-section">The people behind every project</h2>
+      </div>
+    </div>
+    <div class="team-wrap">
+      <figure class="team-photo rv">
+        <img loading="lazy" decoding="async" src="images/team.webp" alt="Jack Haswell and Joshua Graham outside a Capital One Property Partners development">
+      </figure>
+      <div class="team-bios">
+        <article class="member rv">
+          <div class="member-body">
+            <h3>Jack Haswell</h3>
+            <p class="role">Co-Founder &amp; Director</p>
+            <p>Specialist in serviced accommodation and HMOs across Teesside. Jack identifies high-yield opportunities others miss and manages every project hands-on to maximise investor returns.</p>
+            <div class="links"><a href="https://www.linkedin.com/in/jack-h-4380329a/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:jack.haswell@capitalonepropertypartners.com">Email Jack</a></div>
+          </div>
+        </article>
+        <article class="member rv">
+          <div class="member-body">
+            <h3>Joshua Graham</h3>
+            <p class="role">Co-Founder &amp; Director</p>
+            <p>Focused on Darlington and Teesside, Joshua specialises in unlocking the hidden value in underutilised buildings — building a robust portfolio of BTLs and HMOs that deliver consistent returns for investors.</p>
+            <div class="links"><a href="mailto:joshua.graham@capitalonepropertypartners.com">Email Joshua</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="social">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">Investor Experiences</p>
+        <h2 class="h-section">What our partners say</h2>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <!-- [PLACEHOLDER] Use real names + photos with permission — anonymous quotes cost you trust -->
+      <div class="testi rv">
+        <div class="stars">★★★★★</div>
+        <p>"The returns were exactly as projected and the transparency was outstanding. Detailed monthly reports kept me informed from start to finish. I'll definitely be investing again."</p>
+        <div class="who"><div class="avatar">DA</div><div><b>David A.</b><span>Property Investor · 2 projects</span></div></div>
+      </div>
+      <div class="testi rv">
+        <div class="stars">★★★★★</div>
+        <p>"As a first-time investor I was unsure of the process, but the team made it simple. Better returns than I expected — I'm excited to reinvest in the next opportunity."</p>
+        <div class="who"><div class="avatar">SM</div><div><b>Steven M.</b><span>First-Time Investor</span></div></div>
+      </div>
+      <div class="testi rv">
+        <div class="stars">★★★★★</div>
+        <p>"I've invested multiple times and consistently seen exceptional returns. The security and transparency they provide sets them apart — my capital always felt well-managed."</p>
+        <div class="who"><div class="avatar">SK</div><div><b>Steve K.</b><span>Repeat Investor · 4 projects</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="contact">
+  <div class="cta-bg"></div>
+  <div class="wrap">
+    <p class="kicker">Be Part of Our Next Success Story</p>
+    <h2>Let's talk about what your capital could be doing</h2>
+    <p>A 20-minute call. No obligation, no hard sell — just a clear picture of who we are, what we're building and whether it fits your goals.</p>
+    <div class="cta-actions">
+      <a href="https://calendly.com/capital-one-property-partners/consultation" target="_blank" rel="noopener" class="btn btn-gold">Book a Call <span class="arr">→</span></a>
+      <a href="mailto:info@capitalonepropertypartners.com" class="btn btn-ghost">info@capitalonepropertypartners.com</a>
+    </div>
+    <p class="micro">Prefer email? We reply within one working day.</p>
+  </div>
+</section>
+</div><!-- /journey -->
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top"><b>Capital One</b><span>Property Partners</span></a>
+        <p>Property investment and development across Teesside and the North East of England.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#track-record">Track Record</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:info@capitalonepropertypartners.com">info@capitalonepropertypartners.com</a></li>
+          <li><a href="https://calendly.com/capital-one-property-partners/consultation" target="_blank" rel="noopener">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Registered Office</h4>
+        <ul>
+          <li>Capital One Property Partners Ltd</li>
+          <li>Company No. 15164142</li>
+          <li>Registered in England &amp; Wales</li>
+          <li>23 Stafford Drive, Littleover,<br>Derby, DE23 3WG</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>© 2026 Capital One Property Partners Ltd. Property investment places your capital at risk and returns are not guaranteed. Past performance is not a reliable indicator of future results. Nothing on this website constitutes financial advice or a financial promotion; opportunities are only offered to eligible investors following an initial conversation. <!-- [PLACEHOLDER] Have this wording approved by a solicitor / FCA-authorised firm --></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Sticky nav
+const header=document.getElementById('header');
+addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// Mobile menu
+const burger=document.querySelector('.burger'),mmenu=document.getElementById('mobile-menu');
+function closeMenu(){mmenu.classList.remove('open');burger.textContent='☰';burger.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+burger.addEventListener('click',()=>{
+  const open=mmenu.classList.toggle('open');
+  burger.textContent=open?'✕':'☰';
+  burger.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+});
+mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+// Reveal on scroll — fast, subtle, content never stays hidden
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// Safety net: everything visible after 1.6s regardless
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>el.classList.add('in')),1600);
+
+// ============ Scroll-drawn squiggle line ============
+(function(){
+  const journey=document.querySelector('.journey'),
+        path=document.getElementById('sq-path'),
+        dot=document.getElementById('sq-dot');
+  if(!journey||!path)return;
+  let L=0;
+
+  function build(){
+    if(innerWidth<=900)return;
+    const W=journey.clientWidth,H=journey.scrollHeight,
+          jTop=journey.getBoundingClientRect().top+scrollY,
+          secs=[...journey.querySelectorAll(':scope > section')],
+          left=W*0.055,right=W*0.945,mid=W*0.5;
+    // Landing points: alternate sides at each section's heading zone
+    const pts=[[mid,10]];
+    secs.forEach((s,i)=>{
+      const y=(s.getBoundingClientRect().top+scrollY)-jTop+170;
+      if(i===secs.length-1){pts.push([mid,y-60]);}          // final: land centre, above CTA heading
+      else pts.push([i%2===0?right:left,y]);
+    });
+    // Smooth vertical S-curves between points + a little swirl loop at each landing
+    let d=`M ${pts[0][0]} ${pts[0][1]}`;
+    for(let i=1;i<pts.length;i++){
+      const [x1,y1]=pts[i-1],[x2,y2]=pts[i],dy=(y2-y1)*0.55;
+      d+=` C ${x1} ${y1+dy}, ${x2} ${y2-dy}, ${x2} ${y2}`;
+      if(i<pts.length-1){                                    // swirl: small loop at landing point
+        const r=26,dir=x2>mid?-1:1;
+        d+=` c ${dir*r*1.6} ${-r}, ${dir*r*1.6} ${r*1.2}, 0 ${r*0.35}`;
+        d+=` a ${r*0.55} ${r*0.55} 0 1 ${dir>0?0:1} ${dir*2} 1`;
+      }
+    }
+    path.setAttribute('d',d);
+    const svg=path.ownerSVGElement;
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    svg.setAttribute('preserveAspectRatio','none');
+
+    // Keep-out mask: line breaks wherever it would cross content, restarts after
+    const mask=svg.querySelector('#sq-mask'),bg=svg.querySelector('#sq-mask-bg'),PAD=18,NS='http://www.w3.org/2000/svg';
+    bg.setAttribute('width',W);bg.setAttribute('height',H);
+    mask.querySelectorAll('.ko').forEach(r=>r.remove());
+    journey.querySelectorAll(':scope > section .wrap').forEach(el=>{
+      const b=el.getBoundingClientRect();
+      const r=document.createElementNS(NS,'rect');
+      r.setAttribute('class','ko');
+      r.setAttribute('x',b.left-PAD);
+      r.setAttribute('y',(b.top+scrollY-jTop)-PAD);
+      r.setAttribute('width',b.width+PAD*2);
+      r.setAttribute('height',b.height+PAD*2);
+      r.setAttribute('fill','#000');
+      mask.appendChild(r);
+    });
+
+    L=path.getTotalLength();
+    path.style.strokeDasharray=L;
+    draw();
+  }
+
+  function draw(){
+    if(!L)return;
+    const r=journey.getBoundingClientRect(),
+          progress=Math.min(Math.max((innerHeight*0.72-r.top)/r.height,0),1);
+    path.style.strokeDashoffset=L*(1-progress);
+    if(progress>0.005){
+      const p=path.getPointAtLength(L*progress);
+      dot.setAttribute('cx',p.x);dot.setAttribute('cy',p.y);
+      dot.style.opacity=progress>=1?0:1;
+    }else dot.style.opacity=0;
+  }
+
+  addEventListener('scroll',draw,{passive:true});
+  addEventListener('resize',()=>{clearTimeout(build._t);build._t=setTimeout(build,200)});
+  addEventListener('load',build);
+  setTimeout(build,300); // rebuild once fonts/images settle layout
+  setTimeout(build,1800);
+})();
+
+// ============ Project card hover slideshows + blurred backdrops ============
+document.querySelectorAll('.proj').forEach(card=>{
+  const box=card.querySelector('.proj-img');
+  if(!box)return; // pipeline card has no photo container
+  const imgs=[...box.querySelectorAll('img')];
+  // blurred cover backdrop behind each photo so full rooms show without cropping
+  const bgs=imgs.map(img=>{
+    const bg=img.cloneNode();
+    bg.classList.add('blurbg');
+    bg.classList.toggle('on',img.classList.contains('on'));
+    bg.removeAttribute('alt');bg.setAttribute('aria-hidden','true');
+    box.insertBefore(bg,box.firstChild);
+    return bg;
+  });
+  if(imgs.length<2)return;
+  const dots=document.createElement('div');dots.className='proj-dots';
+  imgs.forEach((_,i)=>{const d=document.createElement('i');if(i===0)d.className='on';dots.appendChild(d)});
+  box.appendChild(dots);
+  let idx=0,timer=null;
+  const show=i=>{
+    imgs[idx].classList.remove('on');bgs[idx].classList.remove('on');dots.children[idx].classList.remove('on');
+    idx=(i+imgs.length)%imgs.length;
+    imgs[idx].classList.add('on');bgs[idx].classList.add('on');dots.children[idx].classList.add('on');
+  };
+  card.addEventListener('mouseenter',()=>{timer=setInterval(()=>show(idx+1),1400)});
+  card.addEventListener('mouseleave',()=>{clearInterval(timer);timer=null;show(0)});
+});
+
+// Animated counters
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  const el=e.target,end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),t0=performance.now();
+  const step=t=>{const p=Math.min((t-t0)/1400,1),ease=1-Math.pow(1-p,3);
+    el.textContent=(end*ease).toFixed(dec);if(p<1)requestAnimationFrame(step);};
+  requestAnimationFrame(step);
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+</script>
+</body>
+</html>
