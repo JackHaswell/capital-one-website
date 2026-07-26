@@ -680,21 +680,27 @@ setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>el.classList.add('in
     const W=journey.clientWidth,H=journey.scrollHeight,
           jTop=journey.getBoundingClientRect().top+scrollY,
           secs=[...journey.querySelectorAll(':scope > section')],
-          left=W*0.055,right=W*0.945,mid=W*0.5;
-    // Landing points: alternate sides at each section's heading zone
-    const pts=[[mid,10]];
+          wrapL=secs[0].querySelector('.wrap').getBoundingClientRect().left,
+          margin=Math.max(wrapL,0),wide=margin>=60,
+          leftX=wide?margin*0.55:wrapL+13,rightX=W-leftX,mid=W*0.5,
+          r=wide?Math.min(26,leftX/1.8):0;
+    // Rails run down the free margins (or the wrap's padding gutter on
+    // narrower viewports) and only cross sides in the vertical gaps between
+    // sections, so the line and dot never enter the content keep-out mask.
+    const pts=[{x:mid,y:10}];
     secs.forEach((s,i)=>{
-      const y=(s.getBoundingClientRect().top+scrollY)-jTop+170;
-      if(i===secs.length-1){pts.push([mid,y-60]);}          // final: land centre, above CTA heading
-      else pts.push([i%2===0?right:left,y]);
+      const b=s.getBoundingClientRect(),top=b.top+scrollY-jTop,bot=b.bottom+scrollY-jTop;
+      if(i===secs.length-1){pts.push({x:mid,y:top+95});return}
+      const x=i%2===0?rightX:leftX;
+      pts.push({x,y:top+95,swirl:true});
+      pts.push({x,y:bot-70});
     });
-    // Smooth vertical S-curves between points + a little swirl loop at each landing
-    let d=`M ${pts[0][0]} ${pts[0][1]}`;
+    let d=`M ${pts[0].x} ${pts[0].y}`;
     for(let i=1;i<pts.length;i++){
-      const [x1,y1]=pts[i-1],[x2,y2]=pts[i],dy=(y2-y1)*0.55;
-      d+=` C ${x1} ${y1+dy}, ${x2} ${y2-dy}, ${x2} ${y2}`;
-      if(i<pts.length-1){                                    // swirl: small loop at landing point
-        const r=26,dir=x2>mid?-1:1;
+      const p0=pts[i-1],pt=pts[i],dy=(pt.y-p0.y)*0.55;
+      d+=` C ${p0.x} ${p0.y+dy}, ${pt.x} ${pt.y-dy}, ${pt.x} ${pt.y}`;
+      if(pt.swirl&&r>9){                                     // swirl: small loop opening away from content
+        const dir=pt.x>mid?1:-1;
         d+=` c ${dir*r*1.6} ${-r}, ${dir*r*1.6} ${r*1.2}, 0 ${r*0.35}`;
         d+=` a ${r*0.55} ${r*0.55} 0 1 ${dir>0?0:1} ${dir*2} 1`;
       }
@@ -704,20 +710,21 @@ setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>el.classList.add('in
     svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
     svg.setAttribute('preserveAspectRatio','none');
 
-    // Keep-out mask: line breaks wherever it would cross content, restarts after
-    const mask=svg.querySelector('#sq-mask'),bg=svg.querySelector('#sq-mask-bg'),PAD=18,NS='http://www.w3.org/2000/svg';
+    // Keep-out mask stays as a safety net, inset to the text column so the
+    // gutter rails remain visible on narrower viewports
+    const mask=svg.querySelector('#sq-mask'),bg=svg.querySelector('#sq-mask-bg'),NS='http://www.w3.org/2000/svg';
     bg.setAttribute('width',W);bg.setAttribute('height',H);
-    mask.querySelectorAll('.ko').forEach(r=>r.remove());
+    mask.querySelectorAll('.ko').forEach(k=>k.remove());
     journey.querySelectorAll(':scope > section .wrap').forEach(el=>{
       const b=el.getBoundingClientRect();
-      const r=document.createElementNS(NS,'rect');
-      r.setAttribute('class','ko');
-      r.setAttribute('x',b.left-PAD);
-      r.setAttribute('y',(b.top+scrollY-jTop)-PAD);
-      r.setAttribute('width',b.width+PAD*2);
-      r.setAttribute('height',b.height+PAD*2);
-      r.setAttribute('fill','#000');
-      mask.appendChild(r);
+      const k=document.createElementNS(NS,'rect');
+      k.setAttribute('class','ko');
+      k.setAttribute('x',b.left+18);
+      k.setAttribute('y',(b.top+scrollY-jTop)-8);
+      k.setAttribute('width',Math.max(b.width-36,0));
+      k.setAttribute('height',b.height+16);
+      k.setAttribute('fill','#000');
+      mask.appendChild(k);
     });
 
     L=path.getTotalLength();
