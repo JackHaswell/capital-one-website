@@ -36,14 +36,13 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--gold);color:var(--ink)}
 
-/* ============ THE WALK: fixed scenery ============ */
+/* ============ THE WALK: scroll-scrubbed frame sequence ============ */
 #walk{position:fixed;inset:0;z-index:-2;background:var(--ink)}
-.scene{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;opacity:0;visibility:hidden;transform:scale(1.05)}
-.scene.first{opacity:1;visibility:visible}
+#walk-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#walk-canvas{position:absolute;inset:0;width:100%;height:100%}
 #walk-tint{position:fixed;inset:0;z-index:-1;background:
   radial-gradient(120% 90% at 50% 108%,rgba(12,11,9,.88) 0%,rgba(12,11,9,.28) 55%,rgba(12,11,9,.42) 100%),
   linear-gradient(180deg,rgba(12,11,9,.62) 0%,rgba(12,11,9,.18) 28%,rgba(12,11,9,.30) 72%,rgba(12,11,9,.72) 100%)}
-@media (prefers-reduced-motion:reduce){.scene{transform:none!important;transition:opacity .4s ease}}
 
 /* ============ ROOM CAPTION ============ */
 #room{position:fixed;left:26px;bottom:24px;z-index:40;display:flex;align-items:center;gap:12px;
@@ -175,6 +174,7 @@ h2{font-size:clamp(30px,3.6vw,46px);margin-bottom:20px}
 .quote .who span{color:var(--body);font-weight:600;letter-spacing:.06em;text-transform:none;font-size:12px}
 
 /* ============ TEAM ============ */
+.team-inline{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 30%;border:1px solid var(--line-2);filter:saturate(.9);margin-bottom:8px}
 .member{border-top:1px solid var(--line);padding:22px 0 4px;margin-top:18px}
 .member h3{font-size:22px}
 .member .role{color:var(--gold);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;margin:4px 0 12px}
@@ -209,16 +209,10 @@ footer{position:relative;z-index:1;background:var(--ink);border-top:1px solid va
 </head>
 <body>
 
-<!-- ============ FIXED SCENERY: the property you walk through ============ -->
+<!-- ============ FIXED SCENERY: scroll scrubs a continuous walkthrough ============ -->
 <div id="walk" aria-hidden="true">
-  <img class="scene first" src="../images/hero.webp" alt="">
-  <img class="scene" src="../images/northgate-7.webp" alt="">
-  <img class="scene" data-src="../images/northgate-4.webp" alt="">
-  <img class="scene" data-src="../images/alderson-6.webp" alt="">
-  <img class="scene" data-src="../images/station-road-5.webp" alt="">
-  <img class="scene" data-src="../images/station-road-2.webp" alt="">
-  <img class="scene" data-src="../images/team.webp" alt="">
-  <img class="scene" data-src="../images/cta-bg.webp" alt="">
+  <img id="walk-poster" src="../images/hero.webp" alt="">
+  <canvas id="walk-canvas"></canvas>
 </div>
 <div id="walk-tint" aria-hidden="true"></div>
 
@@ -370,7 +364,8 @@ footer{position:relative;z-index:1;background:var(--ink);border-top:1px solid va
   <div class="panel panel-right rv">
     <p class="kicker">Leadership</p>
     <h2>The people behind every project</h2>
-    <p>That's us on the left — outside a live development. Two directors, hands-on with every acquisition, build and refinance.</p>
+    <img class="team-inline" src="../images/team.webp" alt="Jack Haswell and Joshua Graham outside a Capital One Property Partners development">
+    <p>Two directors, hands-on with every acquisition, build and refinance — photographed outside a live development.</p>
     <div class="member">
       <h3>Jack Haswell</h3>
       <p class="role">Co-Founder &amp; Director</p>
@@ -435,80 +430,97 @@ const cio=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 
 // ============ THE WALK ============
-// Scroll position maps to a continuous "pos" in scene-index space.
-// Each scene fades in over the section boundary and dollies slowly forward
-// while you're in its room, like walking through the property.
+// Scroll position scrubs a 200-frame walkthrough of Northgate. Frames load
+// progressively (nearest-first around where you're standing); the canvas
+// draws the closest loaded frame so the walk never blocks on the network.
 (function(){
-  const scenes=[...document.querySelectorAll('.scene')],
-        sections=[...document.querySelectorAll('main section[data-scene]')],
-        roomName=document.getElementById('room-name'),
-        room=document.getElementById('room'),
-        rail=[...document.querySelectorAll('#rail a')],
-        reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const CAPTIONS=[
-    'Northgate, Darlington — The Studio',
-    'Northgate — The Staircase',
-    'Northgate — Studio Four',
-    'Alderson Street, Teesside — The Kitchen',
-    'Station Road, Darlington — Bedroom Two',
-    'Station Road — The Bathroom',
-    'On Site — Darlington',
-    'Your Next Investment'
+  const N=200,FW=1120,FH=630,src=i=>'walk/w'+String(i).padStart(3,'0')+'.webp';
+  const CAPS=[
+    {from:0,  label:'Northgate, Darlington — The Studio'},
+    {from:23, label:'Northgate — The Staircase'},
+    {from:48, label:'Northgate — Bedroom & Kitchenette'},
+    {from:72, label:'Northgate — Studio Four'},
+    {from:96, label:'Northgate — Bedroom Two'},
+    {from:119,label:'Northgate — Studio Two'},
+    {from:143,label:'Northgate — The Kitchen'},
+    {from:167,label:'Back Where You Arrived — The Studio'}
   ];
-  let B=[],shownRoom=0;
+  const cv=document.getElementById('walk-canvas'),ctx=cv.getContext('2d'),
+        room=document.getElementById('room'),roomName=document.getElementById('room-name'),
+        rail=[...document.querySelectorAll('#rail a')],
+        sections=[...document.querySelectorAll('main section[data-scene]')];
+  const frames=new Array(N),ready=new Array(N).fill(false);
+  let cur=0,drawnIdx=-1,shownCap=CAPS[0].label,B=[];
 
-  function measure(){
-    B=sections.map(s=>{
-      const t=s.getBoundingClientRect().top+scrollY;
-      return Math.max(t-innerHeight*0.45,0);
-    });
-    B[0]=0;
-    B.push(document.documentElement.scrollHeight);
-    tick();
+  function load(i){
+    if(i<0||i>=N||frames[i])return;
+    const im=new Image();
+    frames[i]=im;
+    im.onload=()=>{ready[i]=true;paint();};
+    im.src=src(i);
+  }
+  let seq=0;
+  (function pump(){let c=0;while(seq<N&&c<3){load(seq++);c++;}if(seq<N)setTimeout(pump,150);})();
+
+  function nearestReady(i){
+    if(ready[i])return i;
+    for(let d=1;d<N;d++){
+      if(ready[i-d])return i-d;
+      if(ready[i+d]&&i+d<N)return i+d;
+    }
+    return -1;
   }
 
-  function loadScene(i){
-    const el=scenes[i];
-    if(el&&el.dataset.src){el.src=el.dataset.src;delete el.dataset.src;}
+  function resize(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    cv.width=Math.round(innerWidth*dpr);cv.height=Math.round(innerHeight*dpr);
+    B=sections.map(s=>Math.max(s.getBoundingClientRect().top+scrollY-innerHeight*0.45,0));
+    B[0]=0;
+    drawnIdx=-1;paint();
+  }
+
+  function paint(){
+    const i=nearestReady(Math.round(cur));
+    if(i<0||i===drawnIdx)return;
+    drawnIdx=i;
+    const im=frames[i],s=Math.max(cv.width/FW,cv.height/FH),
+          dw=FW*s,dh=FH*s;
+    ctx.drawImage(im,(cv.width-dw)/2,(cv.height-dh)/2,dw,dh);
   }
 
   function tick(){
-    if(!B.length)return;
-    let k=0;
-    while(k<scenes.length-1&&scrollY>=B[k+1])k++;
-    const span=Math.max(B[k+1]-B[k],1),
-          pos=k+Math.min(Math.max((scrollY-B[k])/span,0),1);
-    loadScene(k+1);loadScene(k+2);
-    scenes.forEach((el,i)=>{
-      // Only the scene underfoot and its neighbours stay composited;
-      // everything else is fully hidden so the GPU drops its layer.
-      if(i<k-1||i>k+1){el.style.visibility='hidden';return}
-      const o=i===0?1:Math.min(Math.max((pos-(i-0.28))/0.28,0),1);
-      const covered=i<k&&pos>=i+1;   // fully hidden behind the scene above it
-      el.style.visibility=(o<=0||covered)?'hidden':'visible';
-      el.style.opacity=o;
-      if(!reduced){
-        const lp=Math.min(Math.max((pos-i+1)/1.9,0),1);
-        el.style.transform=`scale(${(1.05+0.13*lp).toFixed(4)})`;
-      }
-    });
-    room.classList.toggle('off',pos<0.35);
-    // caption + rail
-    // switch label once the next room is actually fading in (not mid-room)
-    const active=Math.min(Math.floor(pos+0.14),scenes.length-1);
-    if(active!==shownRoom){
-      shownRoom=active;
+    const max=document.documentElement.scrollHeight-innerHeight,
+          f=max>0?Math.min(Math.max(scrollY/max,0),1):0,
+          target=f*(N-1);
+    // ease toward the target so fast flicks glide like momentum, but always
+    // advance at least most of the way so scrubbing never lags the page
+    cur=Math.abs(target-cur)>18?target:cur+(target-cur)*0.45;
+    const c=Math.round(cur);
+    for(let d=0;d<=6;d++){load(c+d);load(c-d);}
+    paint();
+    // caption chip
+    let cap=CAPS[0].label;
+    for(const e of CAPS)if(c>=e.from)cap=e.label;
+    room.classList.toggle('off',target<4);
+    if(cap!==shownCap){
+      shownCap=cap;
       room.classList.add('swap');
-      setTimeout(()=>{roomName.textContent=CAPTIONS[active];room.classList.remove('swap');},240);
+      setTimeout(()=>{roomName.textContent=shownCap;room.classList.remove('swap');},240);
     }
-    rail.forEach((a,i)=>a.classList.toggle('on',i===active));
+    // route rail follows page sections
+    if(B.length){
+      let k=0;
+      for(let j=0;j<B.length;j++)if(scrollY>=B[j])k=j;
+      rail.forEach((a,i)=>a.classList.toggle('on',i===k));
+    }
   }
 
   addEventListener('scroll',tick,{passive:true});
-  addEventListener('resize',()=>{clearTimeout(measure._t);measure._t=setTimeout(measure,180)});
-  addEventListener('load',measure);
-  setTimeout(measure,300);
-  roomName.textContent=CAPTIONS[0];
+  addEventListener('resize',()=>{clearTimeout(resize._t);resize._t=setTimeout(resize,180)});
+  addEventListener('load',resize);
+  setTimeout(resize,300);
+  roomName.textContent=shownCap;
+  resize();
 })();
 </script>
 </body>
