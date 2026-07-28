@@ -12,6 +12,17 @@
 <meta property="og:image" content="https://jackhaswell.github.io/capital-one-website/images/hero.webp">
 <meta property="og:url" content="https://jackhaswell.github.io/capital-one-website/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="images/hero.webp" fetchpriority="high">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Capital One Property Partners",
+"url":"https://jackhaswell.github.io/capital-one-website/",
+"email":"info@capitalonepropertypartners.com",
+"description":"Property investment and development across Teesside and the North East of England.",
+"founders":[{"@type":"Person","name":"Jack Haswell"},{"@type":"Person","name":"Joshua Graham"}],
+"address":{"@type":"PostalAddress","streetAddress":"23 Stafford Drive, Littleover","addressLocality":"Derby","postalCode":"DE23 3WG","addressCountry":"GB"},
+"identifier":"15164142",
+"sameAs":["https://find-and-update.company-information.service.gov.uk/company/15164142","https://www.linkedin.com/in/jack-h-4380329a/"]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,7 +46,7 @@
   --sans:'Manrope',-apple-system,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -257,6 +268,63 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
   section{padding:80px 0}
   .about-badge{left:0}
 }
+
+/* ============ HERO FILM ============ */
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+.hero-video.on{opacity:1}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,9,.55) 0%,rgba(12,11,9,.35) 40%,rgba(12,11,9,.92) 82%,var(--ink) 100%)}
+
+/* ============ INVESTORS ============ */
+.invest{background:var(--ink-2);border-block:1px solid var(--line)}
+.inv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:64px}
+.inv-card{background:var(--ink-2);padding:38px 32px;transition:background .35s ease}
+.inv-card:hover{background:var(--ink-3)}
+.inv-card .n{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:16px;margin-bottom:14px}
+.inv-card h3{font-size:20px;margin-bottom:10px}
+.inv-card p{color:var(--body);font-size:14px;font-weight:300}
+.faq-title{font-size:24px;margin-bottom:22px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 4px;font-family:var(--serif);font-size:18px;color:var(--cream)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--gold-bright)}
+.faq .fx{color:var(--gold);font-size:22px;flex:none;transition:transform .3s ease;font-family:var(--sans)}
+.faq details[open] .fx{transform:rotate(45deg)}
+.faq details p{color:var(--body-bright);font-weight:300;font-size:15px;padding:0 4px 22px;max-width:72ch}
+.faq details a{color:var(--gold-bright);border-bottom:1px solid var(--line-2)}
+.pack{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;border:1px solid var(--line-2);padding:34px 38px;margin-top:56px;background:linear-gradient(120deg,rgba(200,164,100,.07),transparent 60%)}
+.pack h3{font-size:22px;margin-bottom:6px}
+.pack p{color:var(--body);font-size:14.5px;font-weight:300;max-width:52ch}
+.micro-link{color:var(--gold-bright);border-bottom:1px solid var(--line-2)}
+
+/* ============ CASE STUDY LIGHTBOX ============ */
+.proj[data-deal]{cursor:pointer}
+.proj-more{border-top:1px solid var(--line);margin-top:20px;padding-top:16px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--gold);display:flex;align-items:center;gap:8px}
+.proj:hover .proj-more{color:var(--gold-bright)}
+#lb{position:fixed;inset:0;z-index:300;background:rgba(6,5,4,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:24px}
+#lb.open{display:flex}
+.lb-box{width:min(1180px,100%);max-height:100%;overflow:auto;display:grid;grid-template-columns:1.5fr 1fr;gap:0;background:var(--ink-2);border:1px solid var(--line-2)}
+.lb-media{position:relative;background:#080706;min-height:320px}
+.lb-media img{width:100%;height:100%;max-height:76vh;object-fit:contain;display:block}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border:1px solid var(--line-2);background:rgba(12,11,9,.8);color:var(--gold-bright);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.lb-nav:hover{background:var(--gold);color:var(--ink)}
+.lb-prev{left:14px}.lb-next{right:14px}
+.lb-dots{position:absolute;bottom:14px;left:0;right:0;display:flex;gap:7px;justify-content:center}
+.lb-dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer}
+.lb-dots i.on{background:var(--gold-bright)}
+.lb-body{padding:42px 40px;display:flex;flex-direction:column}
+.lb-body .kicker{margin-bottom:14px}
+.lb-body h3{font-family:var(--serif);font-size:34px;font-weight:400}
+.lb-body .loc{color:var(--body);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin:4px 0 20px}
+.lb-body .story{color:var(--body-bright);font-weight:300;font-size:15.5px;margin-bottom:26px}
+.lb-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;border-top:1px solid var(--line);padding-top:24px;margin-top:auto}
+.lb-stats .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--body);font-weight:600}
+.lb-stats .v{font-family:var(--serif);font-size:24px;color:var(--gold-bright);margin-top:2px}
+.lb-close{position:absolute;top:18px;right:18px;width:44px;height:44px;background:rgba(12,11,9,.85);border:1px solid var(--line-2);color:var(--cream);font-size:20px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
+.lb-close:hover{background:var(--gold);color:var(--ink)}
+@media(max-width:1020px){.inv-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.lb-box{grid-template-columns:1fr;max-height:92vh}.lb-media img{max-height:44vh}.lb-body{padding:28px 24px}}
+@media(max-width:720px){.inv-grid{grid-template-columns:1fr}.pack{padding:26px 22px}}
 </style>
 </head>
 <body>
@@ -272,6 +340,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
       <li><a href="#about">About</a></li>
       <li><a href="#track-record">Track Record</a></li>
       <li><a href="#process">Our Process</a></li>
+      <li><a href="#invest">Investors</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -284,6 +353,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
   <a href="#about">About</a>
   <a href="#track-record">Track Record</a>
   <a href="#process">Our Process</a>
+  <a href="#invest">Investors</a>
   <a href="#team">Team</a>
   <a href="#contact">Contact</a>
   <a class="btn btn-gold" href="https://calendly.com/capital-one-property-partners/consultation" target="_blank" rel="noopener">Book a Call <span class="arr">→</span></a>
@@ -291,7 +361,10 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
 
 <!-- ================= HERO ================= -->
 <div class="hero" id="top">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <video class="hero-video" muted playsinline autoplay preload="none" poster="images/hero.webp" aria-hidden="true"></video>
+    <div class="hero-shade"></div>
+  </div>
   <div class="wrap hero-inner">
     <p class="kicker">Property Investment &amp; Development · North East England</p>
     <h1 class="h-display">Turning undervalued property into <span class="gold-i">high-performing assets</span></h1>
@@ -521,6 +594,43 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
   </div>
 </section>
 
+<!-- ================= INVESTORS: SECURITY + FAQ ================= -->
+<!-- [SOLICITOR REVIEW] This whole section describes the investment structure —
+     include it in the compliance review alongside the footer wording. -->
+<section class="invest" id="invest">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">For Investors</p>
+        <h2 class="h-section">How your capital is protected</h2>
+      </div>
+      <p class="lead">Before any money moves you'll know exactly what you're funding, what you'll earn, and what secures it.</p>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-card rv"><div class="n">01</div><h3>A written agreement</h3><p>Your fixed return is agreed before you commit and documented in a formal loan agreement — not a handshake.</p></div>
+      <div class="inv-card rv"><div class="n">02</div><h3>Secured on property</h3><p>Your loan is secured against the asset itself — bricks and mortar in high-demand locations, bought below market value.</p></div>
+      <div class="inv-card rv"><div class="n">03</div><h3>Monthly reporting</h3><p>Photos, spend, timeline and milestones, every month from acquisition to completion. You always know where the project stands.</p></div>
+      <div class="inv-card rv"><div class="n">04</div><h3>A defined exit</h3><p>On refinance or sale your capital and agreed return are repaid. The timeline is agreed up front, before any money moves.</p></div>
+    </div>
+    <div class="faq rv">
+      <h3 class="faq-title">Questions investors ask us</h3>
+      <details><summary>What's the minimum investment?<span class="fx">+</span></summary><p>It varies deal by deal. Book a short call and we'll talk through what's currently open and whether it fits what you're looking for.</p></details>
+      <details><summary>How are returns paid?<span class="fx">+</span></summary><p>A fixed return is agreed in writing before you invest. It's paid when the project completes — typically at refinance or sale — alongside the repayment of your original capital.</p></details>
+      <details><summary>What actually secures my investment?<span class="fx">+</span></summary><p>Your loan is documented in a formal agreement and secured against the property itself. We encourage you to have your own solicitor review everything before you commit.</p></details>
+      <details><summary>How long is my capital deployed?<span class="fx">+</span></summary><p>For the length of the project — agreed up front, before you invest. You'll know the expected timeline and exit route from day one.</p></details>
+      <details><summary>What are the risks?<span class="fx">+</span></summary><p>Property investment places your capital at risk and returns are not guaranteed. Projects can overrun and market values can move. We mitigate this by buying below market value, securing every loan against the asset and reporting monthly — but you should never invest money you cannot afford to commit.</p></details>
+      <details><summary>How do we start?<span class="fx">+</span></summary><p>A 20-minute discovery call — no pitch decks, no pressure. <a href="https://calendly.com/capital-one-property-partners/consultation" target="_blank" rel="noopener">Book a time here</a> or email <a href="mailto:info@capitalonepropertypartners.com">info@capitalonepropertypartners.com</a>.</p></details>
+    </div>
+    <div class="pack rv">
+      <div>
+        <h3>Prefer something you can read later?</h3>
+        <p>The investor pack covers who we are, the track record and how the structure works — in two pages.</p>
+      </div>
+      <a class="btn btn-ghost" href="capital-one-investor-pack.pdf" download>Download the Investor Pack <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= TEAM ================= -->
 <section id="team">
   <div class="wrap">
@@ -597,7 +707,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
       <a href="https://calendly.com/capital-one-property-partners/consultation" target="_blank" rel="noopener" class="btn btn-gold">Book a Call <span class="arr">→</span></a>
       <a href="mailto:info@capitalonepropertypartners.com" class="btn btn-ghost">info@capitalonepropertypartners.com</a>
     </div>
-    <p class="micro">Prefer email? We reply within one working day.</p>
+    <p class="micro">Prefer email? We reply within one working day. Or start with the <a class="micro-link" href="capital-one-investor-pack.pdf" download>investor pack (PDF)</a>.</p>
   </div>
 </section>
 </div><!-- /journey -->
@@ -617,6 +727,8 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
           <li><a href="#track-record">Track Record</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="capital-one-investor-pack.pdf" download>Investor Pack (PDF)</a></li>
+          <li><a href="https://find-and-update.company-information.service.gov.uk/company/15164142" target="_blank" rel="noopener">Companies House ↗</a></li>
         </ul>
       </div>
       <div>
@@ -788,6 +900,117 @@ const cio=new IntersectionObserver(es=>es.forEach(e=>{
   requestAnimationFrame(step);
 }),{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+</script>
+
+<!-- ================= CASE STUDY LIGHTBOX ================= -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Project case study">
+  <div class="lb-box">
+    <div class="lb-media">
+      <button class="lb-close" aria-label="Close case study">✕</button>
+      <img alt="">
+      <button class="lb-nav lb-prev" aria-label="Previous photo">←</button>
+      <button class="lb-nav lb-next" aria-label="Next photo">→</button>
+      <div class="lb-dots"></div>
+    </div>
+    <div class="lb-body">
+      <p class="kicker">Case Study</p>
+      <h3></h3>
+      <p class="loc"></p>
+      <p class="story"></p>
+      <div class="lb-stats"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============ Hero film: desktop only, plays once, settles into the still ============
+(function(){
+  const v=document.querySelector('.hero-video');
+  if(!v)return;
+  const conn=navigator.connection||{};
+  if(innerWidth<720||matchMedia('(prefers-reduced-motion:reduce)').matches||conn.saveData)return;
+  const s=document.createElement('source');
+  s.src='media/northgate-hero.mp4';s.type='video/mp4';
+  v.appendChild(s);v.load();
+  v.addEventListener('playing',()=>v.classList.add('on'),{once:true});
+  // final frame matches the hero still, so fading out lands invisibly
+  v.addEventListener('ended',()=>v.classList.remove('on'));
+  v.play().catch(()=>{});
+})();
+
+// ============ Project case studies ============
+(function(){
+  const STORIES={
+    'Northgate':'A tired town-centre building in Darlington, bought for £110k and re-engineered into design-led studio suites. £460k of development created a £750k asset producing £109k a year — fully let.',
+    'Station Road':'A Darlington property bought for £115k. A £122k refurbishment took it to a £320k refinance and £44k of annual rental income.',
+    'Alderson Street':'Bought for £90k and converted into a fully compliant six-bed HMO. £108k of works produced a £260k asset letting at £41k a year.'
+  };
+  const lb=document.getElementById('lb'),
+        img=lb.querySelector('.lb-media img'),
+        dots=lb.querySelector('.lb-dots'),
+        h3=lb.querySelector('.lb-body h3'),
+        loc=lb.querySelector('.lb-body .loc'),
+        story=lb.querySelector('.lb-body .story'),
+        stats=lb.querySelector('.lb-stats');
+  let gallery=[],idx=0,lastFocus=null;
+
+  function show(i){
+    idx=(i+gallery.length)%gallery.length;
+    img.src=gallery[idx].src;
+    img.alt=gallery[idx].alt;
+    [...dots.children].forEach((d,j)=>d.classList.toggle('on',j===idx));
+  }
+  function open(card){
+    const title=card.querySelector('h3').textContent;
+    gallery=[...card.querySelectorAll('.proj-img img:not(.blurbg)')].map(el=>({src:el.src,alt:el.alt}));
+    if(!gallery.length)return;
+    h3.textContent=title;
+    loc.textContent=card.querySelector('.loc').textContent;
+    story.textContent=STORIES[title]||'';
+    stats.innerHTML=card.querySelector('.proj-stats').innerHTML;
+    dots.innerHTML=gallery.map(()=>'<i></i>').join('');
+    [...dots.children].forEach((d,j)=>d.addEventListener('click',e=>{e.stopPropagation();show(j)}));
+    lastFocus=document.activeElement;
+    show(0);
+    lb.classList.add('open');
+    document.body.style.overflow='hidden';
+    lb.querySelector('.lb-close').focus();
+  }
+  function close(){
+    lb.classList.remove('open');
+    document.body.style.overflow='';
+    if(lastFocus)lastFocus.focus();
+  }
+  document.querySelectorAll('.proj:not(.pipeline-card)').forEach(card=>{
+    card.setAttribute('data-deal','');
+    card.setAttribute('tabindex','0');
+    card.setAttribute('role','button');
+    card.setAttribute('aria-label','Open '+card.querySelector('h3').textContent+' case study');
+    const more=document.createElement('div');
+    more.className='proj-more';
+    more.innerHTML='View case study <span class="arr">→</span>';
+    card.querySelector('.proj-body').appendChild(more);
+    card.addEventListener('click',()=>open(card));
+    card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(card)}});
+  });
+  lb.querySelector('.lb-close').addEventListener('click',close);
+  lb.addEventListener('click',e=>{if(e.target===lb)close()});
+  lb.querySelector('.lb-prev').addEventListener('click',e=>{e.stopPropagation();show(idx-1)});
+  lb.querySelector('.lb-next').addEventListener('click',e=>{e.stopPropagation();show(idx+1)});
+  addEventListener('keydown',e=>{
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    if(e.key==='ArrowLeft')show(idx-1);
+    if(e.key==='ArrowRight')show(idx+1);
+  });
+  let tx=null;
+  lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',e=>{
+    if(tx===null)return;
+    const dx=e.changedTouches[0].clientX-tx;tx=null;
+    if(Math.abs(dx)>40)show(idx+(dx<0?1:-1));
+  },{passive:true});
+})();
 </script>
 </body>
 </html>
