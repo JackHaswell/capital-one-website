@@ -437,7 +437,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
       <div class="cell rv"><div class="stat-n">£<span data-count="1.9" data-dec="1">0</span>M<sup>+</sup></div><div class="stat-l">Portfolio Value</div></div>
       <div class="cell rv"><div class="stat-n">£<span data-count="280">0</span>k</div><div class="stat-l">Annual Rental Income</div></div>
       <div class="cell rv"><div class="stat-n">£<span data-count="480">0</span>k<sup>+</sup></div><div class="stat-l">Equity Created Through Development</div></div>
-      <div class="cell rv"><div class="stat-n"><span data-count="100">0</span>%</div><div class="stat-l">Of Completed Projects Fully Let</div></div>
+      <div class="cell rv"><div class="stat-n"><span data-count="96">0</span>%</div><div class="stat-l">Of Completed Projects Fully Let</div></div>
     </div>
   </div>
 </div>
@@ -961,15 +961,18 @@ document.querySelectorAll('.proj').forEach(card=>{
   card.addEventListener('mouseleave',()=>{clearInterval(timer);timer=null;show(0)});
 });
 
-// Animated counters
-const cio=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;cio.unobserve(e.target);
-  const el=e.target,end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),t0=performance.now();
-  const step=t=>{const p=Math.min((t-t0)/1400,1),ease=1-Math.pow(1-p,3);
+// Animated counters — start immediately on arrival, timed just after the headline
+function runCount(el){
+  const end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),t0=performance.now();
+  const step=t=>{const p=Math.min((t-t0)/1600,1),ease=1-Math.pow(1-p,3);
     el.textContent=(end*ease).toFixed(dec);if(p<1)requestAnimationFrame(step);};
   requestAnimationFrame(step);
-}),{threshold:.5});
-document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+}
+let counted=false;
+function startCounters(){if(counted)return;counted=true;
+  document.querySelectorAll('[data-count]').forEach(runCount);}
+addEventListener('load',()=>setTimeout(startCounters,600));
+setTimeout(startCounters,1800); // fallback if load is slow
 </script>
 
 <!-- ================= CASE STUDY LIGHTBOX ================= -->
