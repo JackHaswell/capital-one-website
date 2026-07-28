@@ -269,11 +269,6 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
   .about-badge{left:0}
 }
 
-/* ============ HERO FILM ============ */
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
-.hero-video.on{opacity:1}
-.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,11,9,.55) 0%,rgba(12,11,9,.35) 40%,rgba(12,11,9,.92) 82%,var(--ink) 100%)}
-
 /* ============ INVESTORS ============ */
 .invest{background:var(--ink-2);border-block:1px solid var(--line)}
 .inv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:64px}
@@ -428,10 +423,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
 
 <!-- ================= HERO ================= -->
 <div class="hero" id="top">
-  <div class="hero-bg">
-    <video class="hero-video" muted playsinline autoplay preload="none" poster="images/hero.webp" aria-hidden="true"></video>
-    <div class="hero-shade"></div>
-  </div>
+  <div class="hero-bg"></div>
   <div class="wrap hero-inner">
     <p class="kicker">Property Investment &amp; Development · North East England</p>
     <h1 class="h-display">Turning undervalued property into <span class="gold-i">high-performing assets</span></h1>
@@ -1001,21 +993,6 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 </div>
 
 <script>
-// ============ Hero film: desktop only, plays once, settles into the still ============
-(function(){
-  const v=document.querySelector('.hero-video');
-  if(!v)return;
-  const conn=navigator.connection||{};
-  if(innerWidth<720||matchMedia('(prefers-reduced-motion:reduce)').matches||conn.saveData)return;
-  const s=document.createElement('source');
-  s.src='media/northgate-hero.mp4';s.type='video/mp4';
-  v.appendChild(s);v.load();
-  v.addEventListener('playing',()=>v.classList.add('on'),{once:true});
-  // final frame matches the hero still, so fading out lands invisibly
-  v.addEventListener('ended',()=>v.classList.remove('on'));
-  v.play().catch(()=>{});
-})();
-
 // ============ Project case studies ============
 (function(){
   const STORIES={
