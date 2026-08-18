@@ -134,6 +134,12 @@ section{padding:120px 0;position:relative}
 .pillar p{color:var(--body);font-size:15px;font-weight:300}
 .pillar .pi{width:54px;height:54px;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;margin-bottom:28px;color:var(--gold);font-size:22px}
 
+.pillar-link{color:var(--gold-bright);border-bottom:1px solid var(--line-2);transition:color .3s}
+.pillar-link:hover{color:var(--cream)}
+.pillar-close{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;margin-top:44px}
+.pillar-close p{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--body-bright);max-width:44ch}
+.pillar-ctas{display:flex;gap:14px;flex-wrap:wrap}
+
 /* ============ TRACK RECORD ============ */
 .projects .sec-head p{max-width:44ch}
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
@@ -489,27 +495,35 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
     <div class="sec-head">
       <div>
         <p class="kicker">What We Do</p>
-        <h2 class="h-section">Three ways we create value</h2>
+        <h2 class="h-section">One partner, end to end</h2>
       </div>
+      <p class="lead">Most firms do one piece and broker out the rest. We own the whole journey — which is why our projects finish, let and perform.</p>
     </div>
     <div class="pillar-grid">
       <div class="pillar rv">
-        <div class="pi">⌂</div>
+        <div class="pi">◎</div>
         <div class="num">01</div>
-        <h3>HMO Development</h3>
-        <p>We convert tired terraces into fully compliant, design-led HMOs with en-suite rooms and studio mixes — built for today's professional tenant and yielding well above single-let returns.</p>
+        <h3>We Find</h3>
+        <p>The right opportunities before the market sees them — undervalued residential and commercial buildings across Darlington, Teesside and Hartlepool, surfaced through a local network built over years. For our own pipeline, and for the investors who partner with us.</p>
       </div>
       <div class="pillar rv">
-        <div class="pi">▦</div>
+        <div class="pi">⌂</div>
         <div class="num">02</div>
-        <h3>Buy-to-Lets</h3>
-        <p>Quality single-let homes in high-demand North East locations — acquired below market value, refurbished to a high standard and let to long-term tenants for dependable rental income and capital growth.</p>
+        <h3>We Develop</h3>
+        <p>Full-scope delivery — design, compliance, build. Tired terraces become fully compliant, design-led HMOs and premium single lets, yielding well above standard returns. The same team that underwrites the deal delivers it.</p>
       </div>
       <div class="pillar rv">
-        <div class="pi">◈</div>
+        <div class="pi">❖</div>
         <div class="num">03</div>
-        <h3>Investor Partnerships</h3>
-        <p>Private investors fund our pipeline through secured loan structures — earning fixed returns while we handle everything from acquisition to completion.</p>
+        <h3>We Manage</h3>
+        <p>Through our dedicated management arm, <a class="pillar-link" href="https://capitalonepropertymanagement.co.uk" target="_blank" rel="noopener">Capital One Property Management</a>, your asset stays let, maintained and performing — hands-off income with one point of contact from viewing to tenancy.</p>
+      </div>
+    </div>
+    <div class="pillar-close rv">
+      <p>Invest alongside us, or hand us the keys — either way, the same team owns the outcome.</p>
+      <div class="pillar-ctas">
+        <a href="#invest" class="btn btn-ghost">How Investing Works</a>
+        <a href="https://calendly.com/capital-one-property-partners/consultation" target="_blank" rel="noopener" class="btn btn-gold">Book a Call <span class="arr">→</span></a>
       </div>
     </div>
   </div>
