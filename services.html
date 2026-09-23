@@ -207,5 +207,43 @@ footer .links a:hover{color:var(--cream)}
 </footer>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<!-- Consent banner + analytics. GA4 live; Hotjar/Meta pixel slots ready (paste IDs below when accounts exist). -->
+<script>
+(function(){
+  var GA_ID='G-9K857J86L0';
+  var HOTJAR_ID='';   /* Hotjar site ID (numbers only) - fills when account created */
+  var META_PIXEL='';  /* Meta pixel ID - fills when account created */
+  function loadAnalytics(){
+    if(window.__c1Loaded)return;window.__c1Loaded=true;
+    var s=document.createElement('script');s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=window.gtag||function(){dataLayer.push(arguments);};
+    gtag('js',new Date());
+    gtag('config',GA_ID);
+    if(HOTJAR_ID){(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:HOTJAR_ID,hjsv:6};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r);})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');}
+    if(META_PIXEL){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',META_PIXEL);fbq('track','PageView');}
+  }
+  var choice=null;
+  try{choice=localStorage.getItem('c1-consent');}catch(e){}
+  if(choice==='granted'){loadAnalytics();return;}
+  if(choice==='denied'){return;}
+  var css=document.createElement('style');
+  css.textContent='#c1-cookies{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;background:#141310;color:#f4efe6;border:1px solid rgba(200,164,100,.35);border-radius:12px;padding:18px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;font-family:Manrope,system-ui,sans-serif;font-size:14px;line-height:1.5;box-shadow:0 12px 40px rgba(0,0,0,.45);max-width:760px;margin:0 auto}#c1-cookies p{margin:0;flex:1 1 320px}#c1-cookies a{color:#e0be7e}#c1-cookies .c1-btns{display:flex;gap:10px}#c1-cookies button{font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;padding:10px 18px;border-radius:999px;cursor:pointer;border:1px solid #c8a464}#c1-cookies button[data-c=granted]{background:#c8a464;color:#0c0b09}#c1-cookies button[data-c=denied]{background:transparent;color:#f4efe6;border-color:rgba(244,239,230,.35)}@media(max-width:520px){#c1-cookies{padding:16px}#c1-cookies .c1-btns{width:100%}#c1-cookies button{flex:1}}';
+  document.head.appendChild(css);
+  var b=document.createElement('div');b.id='c1-cookies';b.setAttribute('role','dialog');b.setAttribute('aria-label','Cookie consent');
+  b.innerHTML='<p>We\u2019d like to use analytics cookies to understand how visitors use this site. Nothing is set unless you accept. <a href="privacy.html">Privacy policy</a></p><div class="c1-btns"><button type="button" data-c="granted">Accept</button><button type="button" data-c="denied">Decline</button></div>';
+  document.body.appendChild(b);
+  b.addEventListener('click',function(e){
+    var c=e.target&&e.target.getAttribute&&e.target.getAttribute('data-c');
+    if(!c)return;
+    try{localStorage.setItem('c1-consent',c);}catch(err){}
+    if(c==='granted')loadAnalytics();
+    b.parentNode.removeChild(b);
+  });
+})();
+</script>
 </body>
 </html>
