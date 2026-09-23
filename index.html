@@ -399,12 +399,42 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
   .mob-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:95;background:var(--gold);color:var(--ink);justify-content:center;align-items:center;gap:8px;padding:16px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
   footer{padding-bottom:92px}
 }
+
+/* ============ WHO THIS ISN'T FOR ============ */
+.notfor{border:1px solid var(--line);border-left:2px solid var(--gold);padding:30px 34px;margin-top:44px;background:rgba(255,255,255,.02)}
+.notfor h3{font-size:22px;margin-bottom:14px}
+.notfor ul{list-style:none;display:grid;gap:12px}
+.notfor li{color:var(--body-bright);font-weight:300;font-size:15px;padding-left:22px;position:relative}
+.notfor li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+
+/* ============ EXIT INTENT ============ */
+#exit-pop{position:fixed;inset:0;z-index:250;background:rgba(6,5,4,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:24px}
+#exit-pop.open{display:flex}
+.ei-box{max-width:520px;background:var(--ink-2);border:1px solid var(--line-2);padding:44px 46px;position:relative}
+.ei-box h3{font-family:var(--serif);font-size:30px;font-weight:400;margin:6px 0 12px}
+.ei-box p{color:var(--body-bright);font-weight:300;font-size:15px}
+.ei-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.ei-close{position:absolute;top:14px;right:14px;width:38px;height:38px;background:none;border:1px solid var(--line);color:var(--cream);cursor:pointer;font-size:16px}
+.ei-close:hover{border-color:var(--gold)}
 </style>
 </head>
 <body>
 
 <div id="grain" aria-hidden="true"></div>
 <a class="mob-cta" href="#contact">Book a Call</a>
+
+<div id="exit-pop" role="dialog" aria-modal="true" aria-label="Take the investor pack with you">
+  <div class="ei-box">
+    <button class="ei-close" aria-label="Close">✕</button>
+    <p class="kicker">Before you go</p>
+    <h3>Take the numbers with you</h3>
+    <p>Two pages: the track record, how your capital is protected, and how to reach us when you're ready.</p>
+    <div class="ei-actions">
+      <a class="btn btn-gold" href="capital-one-investor-pack.pdf" download>Download the Investor Pack</a>
+      <button class="btn btn-ghost ei-close2">Keep browsing</button>
+    </div>
+  </div>
+</div>
 <div id="cursor" aria-hidden="true"></div>
 
 <!-- ================= NAV ================= -->
@@ -523,7 +553,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
       </div>
     </div>
     <div class="pillar-close rv">
-      <p>Take one service, or all three end to end — either way, the same team owns the outcome.</p>
+      <p>Take one service, or all three end to end — either way, the same team owns the outcome. <a class="pillar-link" href="services.html">Property owner? Start here →</a></p>
       <div class="pillar-ctas">
         <a href="#contact" class="btn btn-gold">Book a Call <span class="arr">→</span></a>
       </div>
@@ -678,7 +708,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
         <p class="kicker">How We Work Together</p>
         <h2 class="h-section">From first call to capital returned</h2>
       </div>
-      <p class="lead">Two ways in: fund our projects for a fixed, secured return — that journey is below — or use the services above on a property you own, individually or end to end. Both start with the same conversation.</p>
+      <p class="lead">Two ways in: fund our projects for a fixed, secured return — that journey is below — or use <a class="micro-link" href="services.html">our services</a> on a property you own, individually or end to end. Both start with the same conversation.</p>
     </div>
     <div class="proc-grid">
       <div class="proc rv">
@@ -725,12 +755,21 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
     </div>
     <div class="faq rv">
       <h3 class="faq-title">Questions investors ask us</h3>
-      <details><summary>What's the minimum investment?<span class="fx">+</span></summary><p>It varies deal by deal. Book a short call and we'll talk through what's currently open and whether it fits what you're looking for.</p></details>
+      <details><summary>What's the minimum investment?<span class="fx">+</span></summary><p>Honest answer: it depends what's open. Some projects suit one partner funding the whole thing; others split between a few. We'd rather tell you straight on a ten-minute call than publish a number that's wrong by next month — tell us roughly what you're working with and you'll get a yes or no on the spot.</p></details>
       <details><summary>How are returns paid?<span class="fx">+</span></summary><p>A fixed return is agreed in writing before you invest. It's paid when the project completes — typically at refinance or sale — alongside the repayment of your original capital.</p></details>
       <details><summary>What actually secures my investment?<span class="fx">+</span></summary><p>Your loan is documented in a formal agreement and secured against the property itself. We encourage you to have your own solicitor review everything before you commit.</p></details>
-      <details><summary>How long is my capital deployed?<span class="fx">+</span></summary><p>For the length of the project — agreed up front, before you invest. You'll know the expected timeline and exit route from day one.</p></details>
+      <details><summary>How long is my capital deployed?<span class="fx">+</span></summary><p>For the length of the project, agreed up front — the exact term is written into the loan agreement before any money moves, along with the exit route. If a timeline wouldn't suit you, that's a five-minute conversation, not a discovery after you've committed.</p></details>
+      <details><summary>Why not just leave it in the bank?<span class="fx">+</span></summary><p>For money you might need at short notice, the bank is the right answer — genuinely. The difference here: your return is fixed and agreed up front rather than drifting with the base rate, and it's secured against a physical property. The trade-off is real too: your money is committed for the project term, and this is not a savings product — it isn't covered by the FSCS and capital is at risk. Some of your money belongs in the bank. This is for the part that's meant to be working harder.</p></details>
       <details><summary>What are the risks?<span class="fx">+</span></summary><p>Property investment places your capital at risk and returns are not guaranteed. Projects can overrun and market values can move. We mitigate this by buying below market value, securing every loan against the asset and reporting monthly — but you should never invest money you cannot afford to commit.</p></details>
       <details><summary>How do we start?<span class="fx">+</span></summary><p>A 20-minute discovery call — no pitch decks, no pressure. <a href="https://calendly.com/capital-one-property-partners/consultation" target="_blank" rel="noopener">Book a time here</a> or email <a href="mailto:info@capitalonepropertypartners.com">info@capitalonepropertypartners.com</a>.</p></details>
+    </div>
+    <div class="notfor rv">
+      <h3>Who this isn't for</h3>
+      <ul>
+        <li>Money you can't afford to commit — emergency funds, a house deposit you'll need this year, your last savings. We'll tell you to keep them exactly where they are.</li>
+        <li>Anyone who needs the word "guaranteed". Our returns are fixed and secured, but no property investment is guaranteed, and we won't pretend otherwise.</li>
+        <li>Anyone in a hurry. Projects run months, not weeks — this is patient money.</li>
+      </ul>
     </div>
     <div class="pack rv">
       <div>
@@ -822,6 +861,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
         <ul>
           <li><a href="#about">About Us</a></li>
           <li><a href="#track-record">Track Record</a></li>
+          <li><a href="services.html">Services for Owners</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="capital-one-investor-pack.pdf" download>Investor Pack (PDF)</a></li>
@@ -1177,6 +1217,41 @@ setTimeout(startCounters,1800); // fallback if load is slow
   });
 })();
 </script>
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+// Load Calendly only when the booking section approaches — keeps first paint fast
+(function(){
+  const target=document.getElementById('contact');
+  if(!target)return;
+  let loaded=false;
+  function load(){
+    if(loaded)return;loaded=true;
+    const s=document.createElement('script');
+    s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;
+    document.body.appendChild(s);
+  }
+  if('IntersectionObserver' in window){
+    const o=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){load();o.disconnect();}},{rootMargin:'1200px'});
+    o.observe(target);
+  }else load();
+})();
+
+// Exit-intent: offer the pack once per session, desktop only
+(function(){
+  const ov=document.getElementById('exit-pop');
+  if(!ov||matchMedia('(pointer:coarse)').matches)return;
+  let shown=false;
+  try{shown=sessionStorage.getItem('ei')==='1'}catch(e){}
+  function close(){ov.classList.remove('open');document.body.style.overflow='';}
+  document.addEventListener('mouseout',e=>{
+    if(shown||e.relatedTarget||e.clientY>0)return;
+    shown=true;
+    try{sessionStorage.setItem('ei','1')}catch(err){}
+    ov.classList.add('open');document.body.style.overflow='hidden';
+  });
+  ov.addEventListener('click',e=>{if(e.target===ov)close()});
+  ov.querySelectorAll('.ei-close,.ei-close2').forEach(b=>b.addEventListener('click',close));
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('open'))close()});
+})();
+</script>
 </body>
 </html>
