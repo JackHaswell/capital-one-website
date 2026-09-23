@@ -416,6 +416,18 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
 .ei-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
 .ei-close{position:absolute;top:14px;right:14px;width:38px;height:38px;background:none;border:1px solid var(--line);color:var(--cream);cursor:pointer;font-size:16px}
 .ei-close:hover{border-color:var(--gold)}
+
+/* ============ OPEN DEAL STRIP ============ */
+.open-strip{background:var(--ink-2);border-bottom:1px solid var(--line-2)}
+.os-in{display:flex;align-items:center;gap:16px;padding:15px 32px;flex-wrap:wrap}
+.os-dot{width:9px;height:9px;border-radius:50%;background:var(--gold-bright);flex:none;box-shadow:0 0 10px var(--gold-bright);animation:osPulse 2.2s ease-in-out infinite}
+@keyframes osPulse{50%{opacity:.45}}
+.os-in p{font-size:14px;color:var(--body-bright);font-weight:300;margin:0}
+.os-in b{color:var(--cream);font-weight:700}
+.os-in a{margin-left:auto;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--gold);white-space:nowrap}
+.os-in a:hover{color:var(--gold-bright)}
+@media (prefers-reduced-motion:reduce){.os-dot{animation:none}}
+@media(max-width:720px){.os-in{padding:13px 18px}.os-in a{margin-left:0}}
 </style>
 </head>
 <body>
@@ -476,11 +488,20 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
     </div>
     <!-- Whole-portfolio figures supplied by directors -->
     <div class="hero-strip">
-      <div class="cell rv"><div class="stat-n">£<span data-count="1.9" data-dec="1">1.9</span>M<sup>+</sup></div><div class="stat-l">Portfolio Value</div></div>
+      <div class="cell rv"><div class="stat-n">£<span data-count="3.4" data-dec="1">3.4</span>M<sup>+</sup></div><div class="stat-l">Portfolio &amp; Pipeline</div></div>
       <div class="cell rv"><div class="stat-n">£<span data-count="280">280</span>k</div><div class="stat-l">Annual Rental Income</div></div>
       <div class="cell rv"><div class="stat-n">£<span data-count="480">480</span>k<sup>+</sup></div><div class="stat-l">Equity Created Through Development</div></div>
       <div class="cell rv"><div class="stat-n"><span data-count="96">96</span>%</div><div class="stat-l">Of Completed Projects Fully Let</div></div>
     </div>
+  </div>
+</div>
+
+<!-- [SOLICITOR REVIEW] Raise strip — swap the pipeline line for the live deal (name, £ required, closing date) when Jack confirms -->
+<div class="open-strip">
+  <div class="wrap os-in">
+    <span class="os-dot" aria-hidden="true"></span>
+    <p><b>What's open:</b> £1.5M pipeline across Darlington, Teesside &amp; Hartlepool — our next raise opens soon.</p>
+    <a href="#contact">Ask about it →</a>
   </div>
 </div>
 
