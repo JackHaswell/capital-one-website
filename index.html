@@ -442,7 +442,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
     <h3>Take the numbers with you</h3>
     <p>Two pages: the track record, how your capital is protected, and how to reach us when you're ready.</p>
     <div class="ei-actions">
-      <a class="btn btn-gold" href="capital-one-investor-pack.pdf" download>Download the Investor Pack</a>
+      <a class="btn btn-gold" href="https://tally.so/r/obWo0P" data-tally-open="obWo0P" data-tally-overlay="1" data-tally-emoji-animation="none">Get the Investor Pack</a>
       <button class="btn btn-ghost ei-close2">Keep browsing</button>
     </div>
   </div>
@@ -501,7 +501,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
   <div class="wrap os-in">
     <span class="os-dot" aria-hidden="true"></span>
     <p><b>What's open:</b> £1.5M pipeline across Darlington, Teesside &amp; Hartlepool — our next raise opens soon.</p>
-    <a href="#contact">Ask about it →</a>
+    <a href="https://tally.so/r/rj7VRp" data-tally-open="rj7VRp" data-tally-overlay="1" data-tally-emoji-animation="none">Be first to hear →</a>
   </div>
 </div>
 
@@ -797,7 +797,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
         <h3>Prefer something you can read later?</h3>
         <p>The investor pack covers who we are, the track record and how the structure works — in two pages.</p>
       </div>
-      <a class="btn btn-ghost" href="capital-one-investor-pack.pdf" download>Download the Investor Pack <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="https://tally.so/r/obWo0P" data-tally-open="obWo0P" data-tally-overlay="1" data-tally-emoji-animation="none">Get the Investor Pack <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -859,8 +859,9 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
     </div>
     <div class="cta-actions">
       <a href="mailto:jack.haswell@capitalonepropertypartners.com" class="btn btn-ghost">Email Us</a>
+      <a href="https://tally.so/r/KYbLAz" data-tally-open="KYbLAz" data-tally-overlay="1" data-tally-emoji-animation="none" class="btn btn-ghost">Send a Message</a>
     </div>
-    <p class="micro">Or start with the <a class="micro-link" href="capital-one-investor-pack.pdf" download>investor pack (PDF)</a>.</p>
+    <p class="micro">Or start with the <a class="micro-link" href="https://tally.so/r/obWo0P" data-tally-open="obWo0P" data-tally-overlay="1" data-tally-emoji-animation="none">investor pack</a>.</p>
   </div>
 </section>
 </div><!-- /journey -->
@@ -887,7 +888,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--ink
           <li><a href="teesside.html">Investing in Teesside</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="capital-one-investor-pack.pdf" download>Investor Pack (PDF)</a></li>
+          <li><a href="https://tally.so/r/obWo0P" data-tally-open="obWo0P" data-tally-overlay="1" data-tally-emoji-animation="none">Investor Pack</a></li>
         </ul>
       </div>
       <div>
@@ -1311,6 +1312,23 @@ setTimeout(startCounters,1800); // fallback if load is slow
     try{localStorage.setItem('c1-consent',c);}catch(err){}
     if(c==='granted')loadAnalytics();
     b.parentNode.removeChild(b);
+  });
+})();
+</script>
+
+<!-- Tally forms: popup embeds + gated investor pack (download fires after the pack form is submitted) -->
+<script>
+(function(){
+  var s=document.createElement('script');s.src='https://tally.so/widgets/embed.js';s.async=true;document.head.appendChild(s);
+  window.addEventListener('message',function(e){
+    if(typeof e.data!=='string')return;
+    var d;try{d=JSON.parse(e.data);}catch(err){return;}
+    if(d&&d.event==='Tally.FormSubmitted'&&d.payload&&d.payload.formId==='obWo0P'){
+      setTimeout(function(){
+        var a=document.createElement('a');a.href='capital-one-investor-pack.pdf';a.download='capital-one-investor-pack.pdf';
+        document.body.appendChild(a);a.click();a.remove();
+      },800);
+    }
   });
 })();
 </script>

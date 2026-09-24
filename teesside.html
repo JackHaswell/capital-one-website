@@ -92,6 +92,7 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
   <div class="cta-actions">
     <a href="index.html#contact" class="btn btn-gold">Book a Call</a>
     <a href="mailto:jack.haswell@capitalonepropertypartners.com" class="btn btn-ghost">Email Us</a>
+      <a href="https://tally.so/r/KYbLAz" data-tally-open="KYbLAz" data-tally-overlay="1" data-tally-emoji-animation="none" class="btn btn-ghost">Send a Message</a>
   </div>
 </div></section>
 
@@ -134,6 +135,23 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
     try{localStorage.setItem('c1-consent',c);}catch(err){}
     if(c==='granted')loadAnalytics();
     b.parentNode.removeChild(b);
+  });
+})();
+</script>
+
+<!-- Tally forms: popup embeds + gated investor pack (download fires after the pack form is submitted) -->
+<script>
+(function(){
+  var s=document.createElement('script');s.src='https://tally.so/widgets/embed.js';s.async=true;document.head.appendChild(s);
+  window.addEventListener('message',function(e){
+    if(typeof e.data!=='string')return;
+    var d;try{d=JSON.parse(e.data);}catch(err){return;}
+    if(d&&d.event==='Tally.FormSubmitted'&&d.payload&&d.payload.formId==='obWo0P'){
+      setTimeout(function(){
+        var a=document.createElement('a');a.href='capital-one-investor-pack.pdf';a.download='capital-one-investor-pack.pdf';
+        document.body.appendChild(a);a.click();a.remove();
+      },800);
+    }
   });
 })();
 </script>
