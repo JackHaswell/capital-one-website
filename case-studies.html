@@ -46,6 +46,14 @@ h2{font-size:clamp(26px,3.2vw,38px);margin-bottom:20px}
 .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
 .gal img{aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line)}
 .gal img:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}
+.baslider{position:relative;margin:34px 0 8px;aspect-ratio:1.25/1;max-height:600px;overflow:hidden;border:1px solid var(--line-2);user-select:none}
+.baslider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.bs-before{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
+.bs-handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;background:var(--gold);transform:translateX(-1px);pointer-events:none}
+.bs-handle span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:var(--ink);font-weight:800;font-size:15px;letter-spacing:1px;box-shadow:0 4px 18px rgba(0,0,0,.5)}
+.bs-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;-webkit-appearance:none;appearance:none}
+.bs-tag{position:absolute;top:14px;background:rgba(12,11,9,.82);color:var(--cream);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;padding:7px 12px;pointer-events:none}
+.bs-tag-b{left:14px}.bs-tag-a{right:14px;color:var(--gold-bright)}
 .ba{display:grid;grid-template-columns:1fr 1.7fr;gap:10px;margin:34px 0 8px}
 .ba figure{margin:0;position:relative}
 .ba img{width:100%;height:100%;object-fit:cover;border:1px solid var(--line);display:block}
@@ -87,10 +95,15 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
     <div><div class="k">Refinanced At</div><div class="v">£750k</div></div>
     <div><div class="k">Income</div><div class="v">£109k pa</div></div>
   </div>
-  <div class="ba">
-    <figure><img src="images/northgate-before-5.webp" alt="100–104 High Northgate before development — failing render and bricked-up windows at the rear" loading="lazy" decoding="async"><figcaption>Before — the building we took on</figcaption></figure>
-    <figure><img src="images/northgate-after-exterior.webp" alt="100–104 High Northgate after development — re-rendered facade, new windows and railings" loading="lazy" decoding="async"><figcaption><b>After</b> — 100–104 High Northgate today</figcaption></figure>
+  <div class="baslider" id="ng-slider" style="--pos:50%">
+    <img src="images/northgate-after-exterior.webp" alt="100–104 High Northgate after development — re-rendered facade, new windows and railings" decoding="async">
+    <img class="bs-before" src="images/northgate-street-before.webp" alt="100–104 High Northgate before development — the vacant upholstery shop (Google Street View, July 2024)" decoding="async">
+    <div class="bs-handle" aria-hidden="true"><span>⇄</span></div>
+    <input class="bs-range" type="range" min="0" max="100" value="50" step="any" aria-label="Drag to compare the building before and after development">
+    <span class="bs-tag bs-tag-b">Before · Jul 2024</span>
+    <span class="bs-tag bs-tag-a">After</span>
   </div>
+  <p class="gal-cap">Drag to compare — the vacant shop we bought (image: Google Street View, July 2024) against 100–104 High Northgate today.</p>
 
   <h3 class="sub-h">The state we bought it in</h3>
   <div class="gal">
@@ -98,6 +111,7 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
     <img src="images/northgate-before-1.webp" alt="Northgate before works — tired hallway" loading="lazy" decoding="async">
     <img src="images/northgate-before-2.webp" alt="Northgate before works — dated kitchen" loading="lazy" decoding="async">
     <img src="images/northgate-before-4.webp" alt="Northgate before works — bare cellar" loading="lazy" decoding="async">
+    <img src="images/northgate-before-5.webp" alt="Northgate before works — failing render and bricked-up windows at the rear" loading="lazy" decoding="async">
     <img src="images/northgate-before-6.webp" alt="Northgate before works — overgrown rear yard" loading="lazy" decoding="async">
     <img src="images/northgate-during-1.webp" alt="Northgate during the build — new partitions and first-fix wiring" loading="lazy" decoding="async">
     <img src="images/northgate-during-2.webp" alt="Northgate during the build — structural work to the landing" loading="lazy" decoding="async">
@@ -175,6 +189,17 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
   <p>© 2026 Capital One Property Partners Ltd · Company No. 15164142 · ICO Reg. ZB749769 · Registered in England &amp; Wales. Property investment places your capital at risk and returns are not guaranteed. Past performance is not a reliable indicator of future results.</p>
   <div class="links"><a href="index.html">Home</a><a href="services.html">Services for Owners</a><a href="darlington.html">Investing in Darlington</a><a href="teesside.html">Investing in Teesside</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
 </div></footer>
+<!-- Before/after slider -->
+<script>
+(function(){
+  var s=document.getElementById('ng-slider');if(!s)return;
+  var r=s.querySelector('.bs-range');
+  function set(v){s.style.setProperty('--pos',v+'%');}
+  r.addEventListener('input',function(){set(r.value);});
+  set(r.value);
+})();
+</script>
+
 <!-- Consent banner + analytics. GA4 live; Hotjar/Meta pixel slots ready (paste IDs below when accounts exist). -->
 <script>
 (function(){
