@@ -46,6 +46,14 @@ h2{font-size:clamp(26px,3.2vw,38px);margin-bottom:20px}
 .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
 .gal img{aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line)}
 .gal img:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}
+.ba{display:grid;grid-template-columns:1fr 1.7fr;gap:10px;margin:34px 0 8px}
+.ba figure{margin:0;position:relative}
+.ba img{width:100%;height:100%;object-fit:cover;border:1px solid var(--line);display:block}
+.ba figcaption{position:absolute;left:0;bottom:0;background:rgba(12,11,9,.82);color:var(--cream);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;padding:8px 14px}
+.ba figcaption b{color:var(--gold-bright);font-weight:800}
+.gal-cap{font-size:12.5px;color:var(--muted,#a9a294);color:var(--body);font-weight:300;margin:10px 0 0}
+.sub-h{font-family:var(--serif);font-weight:400;font-size:19px;margin:36px 0 0;color:var(--cream)}
+@media(max-width:820px){.ba{grid-template-columns:1fr}}
 .cta-lite{text-align:center;background:var(--ink-2);border-top:1px solid var(--line)}
 .cta-lite h2{max-width:24ch;margin:16px auto 14px}
 .cta-lite p{color:var(--body-bright);font-weight:300;max-width:52ch;margin:0 auto 30px}
@@ -69,7 +77,7 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
 
 <section class="cs" id="northgate"><div class="wrap copy">
   <div class="cs-head"><h2>Northgate</h2><span class="tag">Completed · Fully Let</span></div>
-  <p class="loc">Town Centre, Darlington</p>
+  <p class="loc">100–104 High Northgate, Darlington</p>
   <p>Northgate is our largest completed project and the clearest picture of how we work. We bought a tired town-centre building for £110,000 — the kind of property most investors walk straight past — because we could see what it could become and we knew the demand was there.</p>
   <p>£460,000 of development re-engineered the building into design-led studio suites: proper layouts, quality finishes, built to let quickly and keep letting. This wasn't a cosmetic refresh — it was a full transformation, run by our own team from planning through to completion.</p>
   <p>The finished asset was refinanced at £750,000 and produces £109,000 a year in rent — fully let, with lettings and management handled in-house. The building that nobody wanted is now one of Darlington's best-presented residential addresses.</p>
@@ -79,6 +87,24 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
     <div><div class="k">Refinanced At</div><div class="v">£750k</div></div>
     <div><div class="k">Income</div><div class="v">£109k pa</div></div>
   </div>
+  <div class="ba">
+    <figure><img src="images/northgate-before-5.webp" alt="100–104 High Northgate before development — failing render and bricked-up windows at the rear" loading="lazy" decoding="async"><figcaption>Before — the building we took on</figcaption></figure>
+    <figure><img src="images/northgate-after-exterior.webp" alt="100–104 High Northgate after development — re-rendered facade, new windows and railings" loading="lazy" decoding="async"><figcaption><b>After</b> — 100–104 High Northgate today</figcaption></figure>
+  </div>
+
+  <h3 class="sub-h">The state we bought it in</h3>
+  <div class="gal">
+    <img src="images/northgate-before-3.webp" alt="Northgate before works — water-stained ceilings in the front room" loading="lazy" decoding="async">
+    <img src="images/northgate-before-1.webp" alt="Northgate before works — tired hallway" loading="lazy" decoding="async">
+    <img src="images/northgate-before-2.webp" alt="Northgate before works — dated kitchen" loading="lazy" decoding="async">
+    <img src="images/northgate-before-4.webp" alt="Northgate before works — bare cellar" loading="lazy" decoding="async">
+    <img src="images/northgate-before-6.webp" alt="Northgate before works — overgrown rear yard" loading="lazy" decoding="async">
+    <img src="images/northgate-during-1.webp" alt="Northgate during the build — new partitions and first-fix wiring" loading="lazy" decoding="async">
+    <img src="images/northgate-during-2.webp" alt="Northgate during the build — structural work to the landing" loading="lazy" decoding="async">
+  </div>
+  <p class="gal-cap">As purchased — water damage, failing render, a bare cellar and an overgrown yard — and the full strip-back during the rebuild.</p>
+
+  <h3 class="sub-h">The finished building</h3>
   <div class="gal">
     <img src="images/northgate-1.webp" alt="Northgate — completed studio suite" loading="lazy" decoding="async">
     <img src="images/northgate-2.webp" alt="Northgate — completed interior" loading="lazy" decoding="async">
