@@ -46,6 +46,8 @@ h2{font-size:clamp(26px,3.2vw,38px);margin-bottom:20px}
 .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
 .gal img{aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line)}
 .gal img:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}
+.gal-2{grid-template-columns:1fr 1fr}
+.gal-2 img:first-child{grid-column:auto;grid-row:auto;aspect-ratio:4/3;height:auto}
 .baslider{position:relative;margin:34px 0 8px;aspect-ratio:1.25/1;max-height:600px;overflow:hidden;border:1px solid var(--line-2);user-select:none}
 .baslider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .bs-before{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
@@ -172,14 +174,11 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
   <p class="gal-cap">Bought at auction, then stripped back to the bones — frames from our walk-through videos once the strip-out was done and the rebuild was ready to start.</p>
 
   <h3 class="sub-h">The rebuild</h3>
-  <div class="gal">
-    <img src="images/station-during-1.webp" alt="Station Road rebuild — new rafters going up over the old roofline" loading="lazy" decoding="async">
-    <img src="images/station-during-2.webp" alt="Station Road rebuild — new roof structure and steel against the sky" loading="lazy" decoding="async">
-    <img src="images/station-during-3.webp" alt="Station Road rebuild — the top floor open to the sky mid roof replacement" loading="lazy" decoding="async">
-    <img src="images/station-during-4.webp" alt="Station Road rebuild — the new staircase installed" loading="lazy" decoding="async">
-    <img src="images/station-during-5.webp" alt="Station Road rebuild — attic framed out with new skylight" loading="lazy" decoding="async">
+  <div class="gal gal-2">
+    <img src="images/station-during-1.webp" alt="Station Road rebuild — the new staircase going in" loading="lazy" decoding="async">
+    <img src="images/station-during-2.webp" alt="Station Road rebuild — new roof structure, steels and skylights from inside the attic" loading="lazy" decoding="async">
   </div>
-  <p class="gal-cap">This wasn't decoration — a new steel, a new roof and a new staircase. The building was rebuilt from the frame out.</p>
+  <p class="gal-cap">This wasn’t decoration — a new roof on new steels, new skylights and a new staircase. The building was rebuilt from the frame out.</p>
 
   <h3 class="sub-h">The finished building</h3>
   <div class="gal">
