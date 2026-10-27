@@ -43,13 +43,8 @@ h2{font-size:clamp(26px,3.2vw,38px);margin-bottom:20px}
 .cs-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:30px 0 34px;border:1px solid var(--line);background:var(--ink-2);padding:26px 28px}
 .cs-stats .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--body);font-weight:700;margin-bottom:4px}
 .cs-stats .v{font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);color:var(--gold-bright)}
-.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
-.gal img{aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line)}
-.gal img:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}
-.gal-flat{grid-template-columns:repeat(3,1fr)}
-.gal-flat img:first-child{grid-column:auto;grid-row:auto;aspect-ratio:4/3;height:auto}
-.gal-2{grid-template-columns:1fr 1fr}
-.gal-2 img:first-child{grid-column:auto;grid-row:auto;aspect-ratio:4/3;height:auto}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:34px}
+.gal img{aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);width:100%}
 .baslider{position:relative;margin:34px 0 8px;aspect-ratio:1.25/1;max-height:600px;overflow:hidden;border:1px solid var(--line-2);user-select:none}
 .baslider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .bs-before{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
@@ -124,7 +119,7 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
   <p class="gal-cap">Fully tired and part-tenanted when we bought it — damp, rotten carpets, a bare stone cellar, failing render and an overgrown yard.</p>
 
   <h3 class="sub-h">The rebuild</h3>
-  <div class="gal gal-flat">
+  <div class="gal">
     <img src="images/northgate-during-4.webp" alt="Northgate rebuild — lower ground floor tanked with damp-proof membrane, new joists above" loading="lazy" decoding="async">
     <img src="images/northgate-during-6.webp" alt="Northgate rebuild — insulated floor build-up going down" loading="lazy" decoding="async">
     <img src="images/northgate-during-8.webp" alt="Northgate rebuild — rooms stripped and re-boarded" loading="lazy" decoding="async">
@@ -175,7 +170,7 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
   <p class="gal-cap">Bought at auction, then stripped back to the bones — frames from our walk-through videos once the strip-out was done and the rebuild was ready to start.</p>
 
   <h3 class="sub-h">The rebuild</h3>
-  <div class="gal gal-2">
+  <div class="gal">
     <img src="images/station-during-3.webp" alt="Station Road rebuild — new rafters going up over the old roofline" loading="lazy" decoding="async">
     <img src="images/station-during-4.webp" alt="Station Road rebuild — new roof structure and steel against the sky" loading="lazy" decoding="async">
     <img src="images/station-during-2.webp" alt="Station Road rebuild — new roof, steels and skylights from inside the loft" loading="lazy" decoding="async">
