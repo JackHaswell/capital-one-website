@@ -46,6 +46,8 @@ h2{font-size:clamp(26px,3.2vw,38px);margin-bottom:20px}
 .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
 .gal img{aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line)}
 .gal img:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}
+.gal-flat{grid-template-columns:repeat(3,1fr)}
+.gal-flat img:first-child{grid-column:auto;grid-row:auto;aspect-ratio:4/3;height:auto}
 .gal-2{grid-template-columns:1fr 1fr}
 .gal-2 img:first-child{grid-column:auto;grid-row:auto;aspect-ratio:4/3;height:auto}
 .baslider{position:relative;margin:34px 0 8px;aspect-ratio:1.25/1;max-height:600px;overflow:hidden;border:1px solid var(--line-2);user-select:none}
@@ -122,9 +124,8 @@ footer .links a{color:var(--body)}footer .links a:hover{color:var(--cream)}
   <p class="gal-cap">Fully tired and part-tenanted when we bought it — damp, rotten carpets, a bare stone cellar, failing render and an overgrown yard.</p>
 
   <h3 class="sub-h">The rebuild</h3>
-  <div class="gal">
+  <div class="gal gal-flat">
     <img src="images/northgate-during-4.webp" alt="Northgate rebuild — lower ground floor tanked with damp-proof membrane, new joists above" loading="lazy" decoding="async">
-    <img src="images/northgate-during-5.webp" alt="Northgate rebuild — membrane-lined walls and fresh sub-floor" loading="lazy" decoding="async">
     <img src="images/northgate-during-6.webp" alt="Northgate rebuild — insulated floor build-up going down" loading="lazy" decoding="async">
     <img src="images/northgate-during-8.webp" alt="Northgate rebuild — rooms stripped and re-boarded" loading="lazy" decoding="async">
     <img src="images/northgate-during-1.webp" alt="Northgate rebuild — new partitions and first-fix wiring" loading="lazy" decoding="async">
